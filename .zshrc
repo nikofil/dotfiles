@@ -35,7 +35,8 @@ bindkey '^R' history-incremental-search-backward
 # bindkey '^P' history-search-backward
 # bindkey '^N' history-search-forward  
 
-alias tm="tmux -2"
+alias tmux="tmux -2"
+alias tm="tmux"
 alias tml="tmux list-sessions"
 alias tma="tmux attach-session"
 alias tmd="tmux detach-client"
