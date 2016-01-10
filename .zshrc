@@ -12,6 +12,7 @@ fi
 
 export EDITOR="vim"
 bindkey -v 
+export KEYTIMEOUT=1
 
 setopt AUTO_CD
 setopt AUTO_PUSHD
@@ -24,6 +25,7 @@ setopt NO_CLOBBER
 setopt NO_CASE_GLOB
 setopt NUMERIC_GLOB_SORT
 setopt EXTENDED_GLOB
+setopt AUTO_LIST
 
 bindkey '^B' push-line
 
