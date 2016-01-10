@@ -14,6 +14,18 @@ export EDITOR="vim"
 bindkey -v 
 
 setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt GLOB_COMPLETE
+setopt PUSHD_MINUS
+setopt PUSHD_TO_HOME
+setopt PUSHD_IGNORE_DUPS
+setopt NO_HUP
+setopt NO_CLOBBER
+setopt NO_CASE_GLOB
+setopt NUMERIC_GLOB_SORT
+setopt EXTENDED_GLOB
+
+bindkey '^B' push-line
 
 # vi style incremental search
 bindkey '^R' history-incremental-search-backward
