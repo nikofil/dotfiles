@@ -1,0 +1,65 @@
+[user]
+    name = Nikos Filippakis
+    email = aesmade@gmail.com
+
+[push]
+    default = upstream
+
+[core]
+    trustctime = false
+    editor = vim
+    filemode = false
+    excludesfile = ~/.gitignore_global
+
+[color]
+    ui = true
+
+[color "branch"]
+    current = yellow bold
+    local = green bold
+    remote = cyan bold
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+
+[color "status"]
+    added = green bold
+    changed = blue bold
+    untracked = red bold
+
+[github]
+    user = Aesmade
+
+[credential]
+    helper = cache --timeout=3600
+
+[merge]
+    tool = meld
+
+[mergetool]
+    keepBackup = false
+    keepTemporaries = false
+    prompt = false
+
+[mergetool "meld"]
+    trustExitCode = false
+
+[diff]
+    tool = meld
+
+[difftool]
+    prompt = false
+
+[difftool "meld"]
+    #cmd = meld /Users/filippakis/.babun/cygwin$LOCAL $REMOTE
+
+[alias]
+    last = log -1 --stat
+    cp = cherry-pick
+    unstage = reset HEAD --
+    dc = diff --cached
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
