@@ -11,7 +11,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 export EDITOR="vim"
-bindkey -v 
+bindkey -v
 export KEYTIMEOUT=1
 
 setopt AUTO_CD
@@ -34,6 +34,9 @@ bindkey '^R' history-incremental-search-backward
 # bindkey '^S' history-incremental-search-forward
 # bindkey '^P' history-search-backward
 # bindkey '^N' history-search-forward  
+
+alias em="emacs -nw"
+alias v="vim"
 
 alias tmux="tmux -2"
 alias tm="tmux"

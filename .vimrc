@@ -37,8 +37,13 @@ filetype indent on      " load filetype-specific indent files
 set wildmenu            " visual autocomplete for command menu
 set showmatch           " highlight matching [{()}]
 
+set so=5                " lines to cursor
+set backspace=2         " make backspace work like most other apps
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
+set ignorecase          " do case insensitive matching
+set smartcase           " do smart case matching
+set hidden
 
 " CtrlP settings
 "let g:ctrlp_match_window = 'bottom,order:ttb'
@@ -61,3 +66,4 @@ set guifont=Inconsolata-g\ for\ Powerline\ Medium:h13
 nnoremap <leader><space> :nohlsearch<CR>
 
 map <C-n> :NERDTreeToggle<CR>
+
