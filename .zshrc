@@ -13,6 +13,8 @@ fi
 export EDITOR="vim"
 bindkey -v
 export KEYTIMEOUT=1
+bindkey '^[[1;2C' forward-word
+bindkey '^[[1;2D' backward-word
 
 setopt AUTO_CD
 setopt AUTO_PUSHD
