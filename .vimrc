@@ -65,5 +65,8 @@ set guifont=Inconsolata-g\ for\ Powerline\ Medium:h13
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
+nnoremap <C-j> :bn<CR>
+nnoremap <C-k> :bp<CR>
+
 map <C-n> :NERDTreeToggle<CR>
 

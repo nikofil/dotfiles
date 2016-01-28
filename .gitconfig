@@ -39,6 +39,7 @@
 
 [merge]
     tool = meld
+    defaultToUpstream = true
 
 [mergetool]
     keepBackup = false
