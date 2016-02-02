@@ -44,6 +44,11 @@ bindkey "\e[F" end-of-line
 # completion in the middle of a line
 bindkey '^i' expand-or-complete-prefix
 
+# ignore double esc
+noop () { }
+zle -N noop
+bindkey -M vicmd '\e' noop
+
 setopt AUTO_CD
 setopt AUTO_PUSHD
 setopt GLOB_COMPLETE
@@ -113,3 +118,8 @@ alias grmc="git rm --cached"
 alias gs="git status -sb"
 alias gsh="git show"
 alias gst="git stash"
+
+unalias gcm
+function gcm() {
+    git commit -m "$*"
+}
