@@ -60,13 +60,13 @@ set encoding=utf-8
 set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 set laststatus=2
-set guifont=Inconsolata-g\ for\ Powerline\ Medium:h13
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 14
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
-nnoremap <C-j> :bn<CR>
-nnoremap <C-k> :bp<CR>
+nnoremap <C-k> :bprevious<CR>
+nnoremap <C-j> :bnext<CR>
 
 map <C-n> :NERDTreeToggle<CR>
 

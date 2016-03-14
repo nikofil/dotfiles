@@ -72,7 +72,7 @@ bindkey '^B' push-line
 bindkey '^R' history-incremental-search-backward
 # bindkey '^S' history-incremental-search-forward
 # bindkey '^P' history-search-backward
-# bindkey '^N' history-search-forward  
+# bindkey '^N' history-search-forward
 
 alias em="emacs -nw"
 alias v="vim"
@@ -112,6 +112,7 @@ alias gm="git merge"
 alias gmt="git mergetool"
 alias gmv="git mv"
 alias gp="git push"
+alias gpatch="git format-patch --signoff"
 alias gpull="git pull"
 alias greb="git rebase"
 alias gres="git reset"
@@ -121,6 +122,7 @@ alias grev="git revert"
 alias grm="git rm"
 alias grmc="git rm --cached"
 alias gs="git status -sb"
+alias gsend="git send-email"
 alias gsh="git show"
 alias gst="git stash"
 
