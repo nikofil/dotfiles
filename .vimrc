@@ -61,6 +61,8 @@ set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 set laststatus=2
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 14
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
