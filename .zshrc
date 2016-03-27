@@ -126,6 +126,7 @@ alias gsend="git send-email"
 alias gsh="git show"
 alias gst="git stash"
 
+unalias gcl
 unalias gcm
 function gcm() {
     git commit -m "$*"
