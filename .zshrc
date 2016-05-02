@@ -29,6 +29,8 @@ bindkey "\e[5C" forward-word
 bindkey "\eOc" emacs-forward-word
 bindkey "\e[5D" backward-word
 bindkey "\eOd" emacs-backward-word
+bindkey "\e[1;5D" backward-word
+bindkey "\e[1;5C" forward-word
 bindkey "\e\e[C" forward-word
 bindkey "\e\e[D" backward-word
 bindkey "^H" backward-delete-word
@@ -64,7 +66,7 @@ setopt AUTO_LIST
 
 ZSH_HIGHLIGHT_STYLES[globbing]='fg=cyan'
 
-source ~/.tmuxinator/tmuxinator.zsh
+# source ~/.tmuxinator/tmuxinator.zsh
 
 bindkey '^B' push-line
 
