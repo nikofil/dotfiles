@@ -47,6 +47,11 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
+# Pulse Audio controls
+bindsym Mod4+F4 exec --no-startup-id pactl -- set-sink-volume 0 +5% #increase sound volume
+bindsym Mod4+F3 exec --no-startup-id pactl -- set-sink-volume 0 -5% #decrease sound volume
+bindsym Mod4+F2 exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
@@ -133,6 +138,9 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# move workspace to other monitor
+bindsym $mod+m move workspace to output right
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -168,14 +176,14 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id "setxkbmap -layout us,gr -option grp:rwin_toggle"
 
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id gnome-settings-daemon
+exec --no-startup-id unity-settings-daemon
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
     position top
     status_command i3status
-    tray_output LVDS
+    tray_output primary
     colors{
         background #232323
         statusline #DCDCDC
@@ -186,3 +194,6 @@ client.focused          #3F8AC2 #096BAA #00BAA7 #00DA8E
 client.focused_inactive #333333 #5F676A #ffffff #484e50
 client.unfocused        #333333 #424242 #888888 #292d2e
 client.urgent           #C10004 #900000 #ffffff #900000
+
+exec --no-startup-id sleep 1 && /usr/local/bin/pa-applet
+exec --no-startup-id sleep 1 && /usr/bin/nm-applet

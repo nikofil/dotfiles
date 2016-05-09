@@ -11,6 +11,8 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 export PATH=$PATH:~/.cask/bin
+export WORKON_HOME=~/.virtenvs
+source /usr/local/bin/virtualenvwrapper.sh
 
 export EDITOR="vim"
 bindkey -v
@@ -133,3 +135,5 @@ unalias gcm
 function gcm() {
     git commit -m "$*"
 }
+alias inst="sudo apt-get install"
+eval $(thefuck --alias)
