@@ -136,4 +136,8 @@ function gcm() {
     git commit -m "$*"
 }
 alias inst="sudo apt-get install"
+alias rmf="rm -rf"
+function mkcd() {
+    command mkdir $1 && cd $1
+}
 eval $(thefuck --alias)
