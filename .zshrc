@@ -143,6 +143,6 @@ function mkcd() {
     command mkdir $1 && cd $1
 }
 eval $(thefuck --alias)
-export PATH="/home/nikos/.pyenv/bin:$PATH"
+export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
