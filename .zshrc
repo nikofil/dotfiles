@@ -36,6 +36,7 @@ bindkey "\e[1;5C" forward-word
 bindkey "\e\e[C" forward-word
 bindkey "\e\e[D" backward-word
 bindkey "^H" backward-delete-word
+bindkey '^[[3;5~' kill-word
 # for rxvt
 bindkey "\e[8~" end-of-line
 bindkey "\e[7~" beginning-of-line
@@ -119,6 +120,7 @@ alias gp="git push"
 alias gpatch="git format-patch --signoff"
 alias gpull="git pull"
 alias greb="git rebase"
+alias grem="git remote"
 alias gres="git reset"
 alias gresh="git reset --hard"
 alias gress="git reset --soft"
@@ -141,3 +143,6 @@ function mkcd() {
     command mkdir $1 && cd $1
 }
 eval $(thefuck --alias)
+export PATH="/home/nikos/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

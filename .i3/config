@@ -176,7 +176,6 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-exec --no-startup-id "setxkbmap -layout us,gr -option grp:rwin_toggle"
 
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id unity-settings-daemon
@@ -200,3 +199,4 @@ client.urgent           #C10004 #900000 #ffffff #900000
 
 exec --no-startup-id sleep 1 && /usr/local/bin/pa-applet
 exec --no-startup-id sleep 1 && /usr/bin/nm-applet
+exec --no-startup-id sleep 1 && setxkbmap -layout us,gr -option grp:rwin_toggle
