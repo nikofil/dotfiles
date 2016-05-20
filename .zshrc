@@ -11,7 +11,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 export PATH=$PATH:~/.cask/bin
-export WORKON_HOME=~/.virtenvs
+export WORKON_HOME=~/virtenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
 export EDITOR="vim"
