@@ -10,8 +10,24 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+function rcd {
+  tempfile='/tmp/ranger-cd'
+  ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+  test -f "$tempfile" &&
+  if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+    cd -- "$(cat "$tempfile")"
+  fi
+  rm -f -- "$tempfile"
+}
+function _rcdw {
+    BUFFER="rcd"
+    zle accept-line
+}
+zle -N _rcdw
+
 export PATH=$PATH:~/.cask/bin
 export WORKON_HOME=~/virtenvs
+export VIRTUALENVWRAPPER_WORKON_CD=1
 source /usr/local/bin/virtualenvwrapper.sh
 
 export EDITOR="vim"
@@ -48,6 +64,8 @@ bindkey "\e[H" beginning-of-line
 bindkey "\e[F" end-of-line
 # completion in the middle of a line
 bindkey '^i' expand-or-complete-prefix
+# ranger-cd
+bindkey "^O" _rcdw
 
 # ignore double esc
 noop () { }
@@ -137,6 +155,7 @@ unalias gcm
 function gcm() {
     git commit -m "$*"
 }
+
 alias inst="sudo apt-get install"
 alias rmf="rm -rf"
 function mkcd() {

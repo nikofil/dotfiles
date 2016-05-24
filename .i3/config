@@ -200,3 +200,6 @@ client.urgent           #C10004 #900000 #ffffff #900000
 exec --no-startup-id sleep 1 && /usr/local/bin/pa-applet
 exec --no-startup-id sleep 1 && /usr/bin/nm-applet
 exec --no-startup-id sleep 1 && setxkbmap -layout us,gr -option grp:rwin_toggle
+
+# startup workspace
+exec --no-startup-id sleep 3 && if hash startupi3 2>/dev/null; then startupi3; fi
