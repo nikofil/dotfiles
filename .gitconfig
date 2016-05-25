@@ -3,7 +3,7 @@
     email = nikolaos.filippakis@cern.ch
 
 [push]
-    default = upstream
+    default = simple
 
 [core]
     trustctime = false

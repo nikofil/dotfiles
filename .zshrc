@@ -158,6 +158,7 @@ function gcm() {
 
 alias inst="sudo apt-get install"
 alias rmf="rm -rf"
+alias r="ranger"
 function mkcd() {
     command mkdir $1 && cd $1
 }
@@ -165,3 +166,9 @@ eval $(thefuck --alias)
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+curdate=$(date +%m/%d/%y)
+if [[ ! -e ~/.last_fortune || $(cat ~/.last_fortune) != $curdate ]]; then
+    echo $curdate >! ~/.last_fortune
+    fortune | cowsay
+fi
