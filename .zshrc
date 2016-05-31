@@ -170,5 +170,12 @@ eval "$(pyenv virtualenv-init -)"
 curdate=$(date +%m/%d/%y)
 if [[ ! -e ~/.last_fortune || $(cat ~/.last_fortune) != $curdate ]]; then
     echo $curdate >! ~/.last_fortune
-    fortune | cowsay
+    COWSTYLES="bdgpstwy"
+    RANDCOW=$[ ( $RANDOM % 9 ) ]
+    if [[ $RANDCOW > 0 ]]; then
+        COWSTYLE="-${COWSTYLES[$RANDCOW]}"
+    else
+        COWSTYLE=""
+    fi
+    fortune | cowsay $COWSTYLE
 fi
