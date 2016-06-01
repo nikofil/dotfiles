@@ -35,6 +35,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 bindsym $mod+F4 kill
+bindsym Mod4+F4 kill
 
 # start dmenu (a program launcher)
 bindsym $mod+q exec dmenu_run
@@ -94,8 +95,11 @@ bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
+# change to next monitor
+bindsym $mod+Tab workspace right
+
 # change to last workspace
-bindsym $mod+Tab workspace back_and_forth
+bindsym Mod4+Tab workspace back_and_forth
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
