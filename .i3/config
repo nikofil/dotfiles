@@ -35,7 +35,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 bindsym $mod+F4 kill
-bindsym Mod4+F4 kill
+bindsym Mod4+Q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+q exec dmenu_run
@@ -96,7 +96,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change to next monitor
-bindsym $mod+Tab workspace right
+bindsym $mod+Tab focus output right
 
 # change to last workspace
 bindsym Mod4+Tab workspace back_and_forth
@@ -163,10 +163,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -204,6 +204,7 @@ client.urgent           #C10004 #900000 #ffffff #900000
 exec --no-startup-id sleep 1 && /usr/local/bin/pa-applet
 exec --no-startup-id sleep 1 && /usr/bin/nm-applet
 exec --no-startup-id sleep 1 && setxkbmap -layout us,gr -option grp:rwin_toggle
+exec --no-startup-id sleep 1 && setxkbmap -option caps:escape
 
 # startup workspace
 exec --no-startup-id sleep 3 && if hash startupi3 2>/dev/null; then startupi3; fi
