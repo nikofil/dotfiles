@@ -99,6 +99,7 @@ bindkey '^R' history-incremental-search-backward
 
 alias em="emacs -nw"
 alias v="vim"
+alias sv="sudo vim"
 
 alias tmux="tmux -2"
 alias tm="tmux"
@@ -122,15 +123,18 @@ alias gbl="git blame"
 alias gc="git commit --signoff"
 alias gch="git checkout"
 alias gcherry="git cherry-pick"
+function gchpr(){git fetch $1 refs/pull/$2/head:pr/$2 && git checkout pr/$2;}
 alias gclean="git clean -f"
 alias gclon="git clone"
 alias gd="git diff"
 alias gdt="git difftool"
 alias gf="git fetch"
+function gfpr(){git fetch $1 refs/pull/$2/head:pr/$2;}
 alias ggrep="git grep"
 alias ginit="git init"
-alias gl="git log"
-alias glo="git log --pretty=oneline"
+alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --stat --"
+alias glast="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --stat -1 --"
+alias glo="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
 alias gm="git merge"
 alias gmt="git mergetool"
 alias gmv="git mv"
@@ -156,6 +160,10 @@ function gcm() {
     git commit -m "$*"
 }
 
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 alias inst="sudo apt-get install"
 alias rmf="rm -rf"
 alias r="ranger"
