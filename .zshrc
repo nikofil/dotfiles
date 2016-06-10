@@ -25,7 +25,7 @@ function _rcdw {
 }
 zle -N _rcdw
 
-export PATH=$PATH:~/.cask/bin
+export PATH=$PATH:$HOME/.cask/bin:$HOME/.pyenv/bin:$HOME/bin
 export WORKON_HOME=~/virtenvs
 export VIRTUALENVWRAPPER_WORKON_CD=1
 source /usr/local/bin/virtualenvwrapper.sh
@@ -171,7 +171,6 @@ function mkcd() {
     command mkdir $1 && cd $1
 }
 eval $(thefuck --alias)
-export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
