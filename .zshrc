@@ -101,6 +101,8 @@ alias em="emacs -nw"
 alias v="vim"
 alias sv="sudo vim"
 
+alias extract="aunpack"
+
 alias tmux="tmux -2"
 alias tm="tmux"
 alias tml="tmux list-sessions"
