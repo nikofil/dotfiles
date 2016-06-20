@@ -63,6 +63,7 @@ set laststatus=2
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 14
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
+set clipboard=unnamedplus  "X clipboard as unnamed
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
