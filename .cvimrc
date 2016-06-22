@@ -1,3 +1,4 @@
+unmap <C-6>
 map <C-j> nextTab
 map <C-k> previousTab
 map yf yankUrl
