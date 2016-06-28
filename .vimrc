@@ -67,6 +67,8 @@ set clipboard=unnamedplus  "X clipboard as unnamed
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
+" close current tab
+nnoremap <leader>q :bn<cr>:bd #<cr>
 
 nnoremap <C-k> :bprevious<CR>
 nnoremap <C-j> :bnext<CR>
