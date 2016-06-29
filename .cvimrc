@@ -11,19 +11,24 @@ map b :buffer<space>
 map B :bookmarks<space>
 let locale = "uk"
 
-let searchengine gg = "http://www.google.com/search?q=%s&btnI=I%27m+Feeling+Lucky"
+let searchengine amazon = "https://www.amazon.com/s/?field-keywords=%s"
+let searchengine duck = "https://duckduckgo.com/?q=%s&ia=meanings"
+let searchengine en = "http://translate.google.com/#auto|en|%s"
+let searchengine g = "http://www.google.com/search?q=%s&btnI=I%27m+Feeling+Lucky"
 let searchengine gi = "https://www.google.gr/search?tbm=isch&q=%s"
 let searchengine gm = "https://www.google.gr/maps/search/%s"
-let searchengine en = "http://translate.google.com/#auto|en|%s"
 let searchengine gr = "http://translate.google.com/#auto|el|%s"
-let searchengine tpb = "http://www.imdb.com/find?q=%s"
+let searchengine imdb = "http://www.imdb.com/find?q=%s"
+let searchengine mvn = "http://search.maven.org#search|ga|1|%s"
 let searchengine quora = "http://www.quora.com/opensearch/query?q=%s&pw={startPage?}"
 let searchengine shodan = "https://www.shodan.io/search?query=%s"
 let searchengine skroutz = "http://www.skroutz.gr/search?keyphrase=%s&from=opensearch"
 let searchengine so = "http://stackoverflow.com/search?q=%s"
 let searchengine steam = "http://store.steampowered.com/search/?ref=os&term=%s"
-let searchengine mvn = "http://search.maven.org#search|ga|1|%s"
 let searchengine tpb = "https://thepiratebay.org/search/%s/0/7/0"
+let searchengine urban = "http://www.urbandictionary.com/define.php?term=%s"
 let searchengine wiki = "https://en.wikipedia.org/w/index.php?search=%s"
 let searchengine wolfram = "http://www.wolframalpha.com/input/?i=%s"
 let searchengine yt = "https://www.youtube.com/results?search_query=%s"
+
+let completionengines = ["amazon", "duck", "g", "gi", "gm", "google", "imdb", "urban", "wiki", "wolfram", "yt"]
