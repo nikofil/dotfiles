@@ -75,3 +75,11 @@ nnoremap <C-j> :bnext<CR>
 
 map <C-n> :NERDTreeToggle<CR>
 
+" move in insert mode
+inoremap <C-w> <C-o>w
+inoremap <C-b> <C-o>b
+inoremap <C-e> <C-o>e
+inoremap <C-h> <C-o>h
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-l> <C-o>l
