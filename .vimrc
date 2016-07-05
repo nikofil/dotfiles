@@ -36,6 +36,7 @@ set cursorline          " highlight current line
 filetype indent on      " load filetype-specific indent files
 set wildmenu            " visual autocomplete for command menu
 set showmatch           " highlight matching [{()}]
+set timeoutlen=300      " timeout for key combinations
 
 set so=5                " lines to cursor
 set backspace=2         " make backspace work like most other apps
@@ -68,7 +69,7 @@ set clipboard=unnamedplus  "X clipboard as unnamed
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 " close current tab
-nnoremap <leader>q :bn<cr>:bd #<cr>
+nnoremap <leader>q :bp<cr>:bd #<cr>
 
 nnoremap <C-k> :bprevious<CR>
 nnoremap <C-j> :bnext<CR>
@@ -87,3 +88,6 @@ inoremap <C-l> <C-o>l
 " start nerdtree if no files were specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" close vim if NerdTree is last window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

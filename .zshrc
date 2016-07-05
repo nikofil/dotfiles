@@ -99,6 +99,7 @@ bindkey '^R' history-incremental-search-backward
 
 alias em="emacs -nw"
 alias v="vim"
+alias gv="gvim"
 alias sv="sudo vim"
 
 alias extract="aunpack"
@@ -147,6 +148,7 @@ alias gpatch="git format-patch --signoff"
 alias gpf="git push -f"
 alias gpull="git pull"
 alias greb="git rebase"
+alias greb="git rebase -i"
 alias grem="git remote"
 alias gres="git reset"
 alias gresh="git reset --hard"
@@ -179,6 +181,7 @@ eval $(thefuck --alias)
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+# moo
 curdate=$(date +%m/%d/%y)
 if [[ ! -e ~/.last_fortune || $(cat ~/.last_fortune) != $curdate ]]; then
     echo $curdate >! ~/.last_fortune
@@ -191,3 +194,6 @@ if [[ ! -e ~/.last_fortune || $(cat ~/.last_fortune) != $curdate ]]; then
     fi
     fortune | cowsay $COWSTYLE
 fi
+
+export NVM_DIR="/home/nikos/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
