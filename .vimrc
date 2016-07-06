@@ -16,6 +16,9 @@ Plugin 'bling/vim-airline'
 " Plugin 'vim-scripts/vcscommand.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ludovicchabant/vim-lawrencium'
+Plugin 'mileszs/ack.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'easymotion/vim-easymotion'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -64,6 +67,7 @@ set laststatus=2
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 14
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
+set guioptions-=L  "remove left-hand scroll bar
 set clipboard=unnamedplus  "X clipboard as unnamed
 
 " turn off search highlight
@@ -75,6 +79,15 @@ nnoremap <C-k> :bprevious<CR>
 nnoremap <C-j> :bnext<CR>
 
 map <C-n> :NERDTreeToggle<CR>
+
+" EasyMotion bindings
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+nmap s <Plug>(easymotion-overwin-f2)
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 " move in insert mode
 inoremap <C-w> <C-o>w
