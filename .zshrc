@@ -98,9 +98,9 @@ bindkey '^R' history-incremental-search-backward
 # bindkey '^N' history-search-forward
 
 alias em="emacs -nw"
-alias v="vim"
+alias v="nvim"
 alias gv="gvim"
-alias sv="sudo vim"
+alias sv="sudo nvim"
 
 alias extract="aunpack"
 

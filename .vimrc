@@ -13,12 +13,17 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'sjl/badwolf'
 Plugin 'moll/vim-bbye'
 Plugin 'bling/vim-airline'
-" Plugin 'vim-scripts/vcscommand.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'ludovicchabant/vim-lawrencium'
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'raimondi/delimitmate'
+Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-repeat'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -26,8 +31,6 @@ filetype plugin indent on    " required
 
 let mapleader=","       " leader is comma
 
-set t_Co=256
-colorscheme badwolf         " awesome colorscheme
 syntax enable           " enable syntax processing
 set tabstop=4       " number of visual spaces per TAB
 set softtabstop=4   " number of spaces in tab when editing
@@ -50,18 +53,20 @@ set smartcase           " do smart case matching
 set hidden
 
 " CtrlP settings
-"let g:ctrlp_match_window = 'bottom,order:ttb'
-"let g:ctrlp_switch_buffer = 0
-"let g:ctrlp_working_path_mode = 0
-"let g:Powerline_symbols = 'fancy'
+let g:ctrlp_cmd='CtrlP :pwd'
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 2
+let g:Powerline_symbols = 'fancy'
 
 " Settings for airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#use_vcscommand = 1
 let g:airline#extensions#tabline#enabled = 1
 
-set encoding=utf-8
 set t_Co=256
+colorscheme badwolf         " awesome colorscheme
+set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set laststatus=2
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 14
@@ -88,6 +93,8 @@ map <Leader>L <Plug>(easymotion-bd-jk)
 nmap <Leader>L <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
+" use smartcase
+let g:EasyMotion_smartcase = 1
 
 " move in insert mode
 inoremap <C-w> <C-o>w
@@ -98,7 +105,7 @@ inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
 
-" start nerdtree if no files were specified
+" start NerdTree if no files were specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
