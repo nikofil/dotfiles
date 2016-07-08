@@ -21,9 +21,11 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'raimondi/delimitmate'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-repeat'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'myusuf3/numbers.vim'
+Plugin 'Shougo/deoplete.nvim'
 Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ternjs/tern_for_vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -42,7 +44,7 @@ set cursorline          " highlight current line
 filetype indent on      " load filetype-specific indent files
 set wildmenu            " visual autocomplete for command menu
 set showmatch           " highlight matching [{()}]
-set timeoutlen=300      " timeout for key combinations
+set timeoutlen=500      " timeout for key combinations
 
 set so=5                " lines to cursor
 set backspace=2         " make backspace work like most other apps
@@ -64,9 +66,9 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#use_vcscommand = 1
 let g:airline#extensions#tabline#enabled = 1
 
+set encoding=utf-8
 set t_Co=256
 colorscheme badwolf         " awesome colorscheme
-set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set laststatus=2
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 14
@@ -95,6 +97,20 @@ map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 " use smartcase
 let g:EasyMotion_smartcase = 1
+let g:ycm_python_binary_path = 'python'
+
+" deoplete config
+let g:deoplete#enable_at_startup = 1
+if has("gui_running")
+    inoremap <silent><expr><C-Space> deoplete#mappings#manual_complete()
+else
+    inoremap <silent><expr><C-@> deoplete#mappings#manual_complete()
+endif
+" UltiSnips config
+inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " move in insert mode
 inoremap <C-w> <C-o>w
