@@ -44,14 +44,14 @@ bindsym $mod+q exec dmenu_run
 # installed.
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle #mute sound
 
 # Pulse Audio controls
-bindsym Mod4+F4 exec --no-startup-id pactl -- set-sink-volume 0 +5% #increase sound volume
-bindsym Mod4+F3 exec --no-startup-id pactl -- set-sink-volume 0 -5% #decrease sound volume
-bindsym Mod4+F2 exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym Mod4+F4 exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
+bindsym Mod4+F3 exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume
+bindsym Mod4+F2 exec --no-startup-id amixer -D pulse set Master 1+ toggle #mute sound
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
