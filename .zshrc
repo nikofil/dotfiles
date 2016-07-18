@@ -132,6 +132,7 @@ function gchpr(){git fetch $1 refs/pull/$2/head:pr/$2 && git checkout pr/$2;}
 alias gclean="git clean -f"
 alias gclon="git clone"
 alias gd="git diff"
+alias gds="git diff --staged"
 alias gdt="git difftool"
 alias gf="git fetch"
 function gfpr(){git fetch $1 refs/pull/$2/head:pr/$2;}
