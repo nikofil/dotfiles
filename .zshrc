@@ -138,9 +138,10 @@ alias gf="git fetch"
 function gfpr(){git fetch $1 refs/pull/$2/head:pr/$2;}
 alias ggrep="git grep"
 alias ginit="git init"
-alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --stat"
-alias glast="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --stat -1"
+alias gl="git log --topo-order --stat --pretty=format:\"${_git_log_medium_format}\""
+alias glast="git log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --stat -1"
 alias glo="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gls="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --stat"
 alias gm="git merge"
 alias gmt="git mergetool"
 alias gmv="git mv"
@@ -177,6 +178,9 @@ alias rmf="rm -rf"
 alias r="ranger"
 function mkcd() {
     command mkdir $1 && cd $1
+}
+function f() {
+    noglob find . -iname "*$1*"
 }
 eval $(thefuck --alias)
 eval "$(pyenv init -)"
