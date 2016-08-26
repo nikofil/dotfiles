@@ -151,6 +151,7 @@ alias gpf="git push -f"
 alias gpull="git pull"
 alias greb="git rebase"
 alias grebi="git rebase -i"
+alias greflog="git reflog --color --walk-reflogs --pretty=format:'%Cred%h%Creset %C(magenta)%gD%Creset -%C(yellow)%d%Creset %gs %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias grem="git remote -v"
 alias gres="git reset"
 alias gresh="git reset --hard"
@@ -162,6 +163,7 @@ alias gs="git status -sb"
 alias gsend="git send-email"
 alias gsh="git show"
 alias gst="git stash"
+function gundo() {git reset --hard $(git rev-parse --abbrev-ref HEAD)@\{${1-1}\};}
 
 unalias gcl
 unalias gcm
