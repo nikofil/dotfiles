@@ -1,14 +1,21 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
-# Source Prezto.
+# Source Prezto
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
+
+# Run Fasd
+eval "$(fasd --init auto)"
+unalias d
+alias d="dirs -v"
+alias fd="fasd -d"
+unalias f
+function f() {
+    q="*"
+    for i in $@; do q="$q$i*"; done
+    noglob find . -iname "$q"
+}
+alias ff='fasd -f'
+alias fv='fasd -f -t -e vim -b viminfo'
 
 function rcd {
   tempfile='/tmp/ranger-cd'
@@ -180,9 +187,6 @@ alias rmf="rm -rf"
 alias r="ranger"
 function mkcd() {
     command mkdir $1 && cd $1
-}
-function f() {
-    noglob find . -iname "*$1*"
 }
 eval $(thefuck --alias)
 eval "$(pyenv init -)"

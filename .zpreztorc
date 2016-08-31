@@ -36,6 +36,9 @@ zstyle ':prezto:load' pmodule \
   'archive' \
   'syntax-highlighting' \
   'history-substring-search' \
+  'autosuggestions' \
+  'command-not-found' \
+  'fasd' \
   'prompt'
 
 #
