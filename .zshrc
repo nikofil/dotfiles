@@ -16,6 +16,9 @@ function f() {
 }
 alias ff='fasd -f'
 alias fv='fasd -f -t -e vim -b viminfo'
+function vf() {
+    f $@ | xargs vim
+}
 
 function rcd {
   tempfile='/tmp/ranger-cd'
@@ -108,6 +111,7 @@ alias em="emacs -nw"
 alias v="nvim"
 alias gv="gvim"
 alias sv="sudo nvim"
+alias new="i3-sensible-terminal ."
 
 alias extract="aunpack"
 
