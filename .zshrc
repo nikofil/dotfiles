@@ -12,7 +12,7 @@ unalias f
 function f() {
     q="*"
     for i in $@; do q="$q$i*"; done
-    noglob find . -iname "$q"
+    noglob find . -iwholename "$q"
 }
 alias ff='fasd -f'
 alias fv='fasd -f -t -e vim -b viminfo'
