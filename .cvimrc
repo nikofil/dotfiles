@@ -10,7 +10,7 @@ map A :open google<space>
 map b :buffer<space>
 map B :bookmarks<space>
 let locale = "uk"
-
+let hintcharacters="abcdefghijklmnopqrstuvwxyz"
 let searchengine amazon = "https://www.amazon.com/s/?field-keywords=%s"
 let searchengine duck = "https://duckduckgo.com/?q=%s&ia=meanings"
 let searchengine en = "http://translate.google.com/#auto|en|%s"
@@ -30,5 +30,4 @@ let searchengine urban = "http://www.urbandictionary.com/define.php?term=%s"
 let searchengine wiki = "https://en.wikipedia.org/w/index.php?search=%s"
 let searchengine wolfram = "http://www.wolframalpha.com/input/?i=%s"
 let searchengine yt = "https://www.youtube.com/results?search_query=%s"
-
 let completionengines = ["amazon", "duck", "g", "gi", "gm", "google", "imdb", "urban", "wiki", "wolfram", "yt"]
