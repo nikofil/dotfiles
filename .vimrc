@@ -19,6 +19,7 @@ Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'raimondi/delimitmate'
+Plug 'schickling/vim-bufonly'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-repeat'
 Plug 'scrooloose/nerdcommenter'
@@ -81,7 +82,9 @@ set clipboard=unnamedplus  "X clipboard as unnamed
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 " close current tab
-nnoremap <leader>q :bp<cr>:bd #<cr>
+nnoremap <leader>q :bp<CR>:bd #<CR>
+" close other tabs
+nnoremap <leader>Q :BufOnly<CR>
 
 nnoremap <C-k> :bprevious<CR>
 nnoremap <C-j> :bnext<CR>
@@ -149,10 +152,6 @@ inoremap <C-h> <C-o>h
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
-
-" start NerdTree if no files were specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " close vim if NerdTree is last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

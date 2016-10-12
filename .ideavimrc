@@ -1,4 +1,5 @@
-let mapleader=","       " leader is comma
+let mapleader=','   " leader is comma
+let maplocalleader = ' '
 
 set tabstop=4       " number of visual spaces per TAB
 set softtabstop=4   " number of spaces in tab when editing
@@ -8,6 +9,7 @@ set number              " show line numbers
 set rnu                 " show relative line numbers
 set showcmd             " show command in bottom bar
 set cursorline          " highlight current line
+set surround            " use surround shortcuts
 filetype indent on      " load filetype-specific indent files
 set wildmenu            " visual autocomplete for command menu
 set showmatch           " highlight matching [{()}]
@@ -47,7 +49,9 @@ set clipboard=unnamedplus  "X clipboard as unnamed
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 " close current tab
-nnoremap <leader>q :bp<cr>:bd #<cr>
+nnoremap <leader>q :action CloseEditor<CR>
+" close other tabs
+nnoremap <leader>Q :action CloseAllEditorsButActive<CR>
 
 nnoremap <C-k> :action PreviousTab<CR>
 nnoremap <C-j> :action NextTab<CR>

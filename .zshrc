@@ -161,6 +161,8 @@ alias gpatch="git format-patch --signoff"
 alias gpf="git push -f"
 alias gpull="git pull"
 alias greb="git rebase"
+alias greba="git rebase --abort"
+alias grebc="git rebase --continue"
 alias grebi="git rebase -i"
 alias greflog="git reflog --color --walk-reflogs --pretty=format:'%Cred%h%Creset %C(magenta)%gD%Creset -%C(yellow)%d%Creset %gs %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias grem="git remote -v"
@@ -215,3 +217,5 @@ export NVM_DIR="/home/nikos/.nvm"
 
 # OPAM configuration
 . /home/nikos/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
