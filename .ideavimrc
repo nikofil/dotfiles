@@ -23,13 +23,6 @@ set ignorecase          " do case insensitive matching
 set smartcase           " do smart case matching
 set hidden
 
-" CtrlP settings
-let g:ctrlp_cmd='CtrlP :pwd'
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 2
-let g:Powerline_symbols = 'fancy'
-
 " Settings for airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#use_vcscommand = 1
@@ -48,10 +41,8 @@ set clipboard=unnamedplus  "X clipboard as unnamed
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
-" close current tab
-nnoremap <leader>q :action CloseEditor<CR>
-" close other tabs
-nnoremap <leader>Q :action CloseAllEditorsButActive<CR>
+" search everywhere
+nnoremap <C-p> :action SearchEverywhere<CR>
 
 nnoremap <C-k> :action PreviousTab<CR>
 nnoremap <C-j> :action NextTab<CR>
@@ -66,10 +57,3 @@ inoremap <C-h> <C-o>h
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
-
-" start NerdTree if no files were specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" close vim if NerdTree is last window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

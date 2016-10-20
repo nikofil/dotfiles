@@ -188,6 +188,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
 alias inst="sudo apt-get install"
 alias rmf="rm -rf"
 alias r="ranger"
