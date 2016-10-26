@@ -1,5 +1,5 @@
-let mapleader=','   " leader is comma
-let maplocalleader = ' '
+let mapleader = ","   " leader is comma
+let localleader = "," " leader is comma
 
 set tabstop=4       " number of visual spaces per TAB
 set softtabstop=4   " number of spaces in tab when editing
@@ -23,20 +23,8 @@ set ignorecase          " do case insensitive matching
 set smartcase           " do smart case matching
 set hidden
 
-" Settings for airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#branch#use_vcscommand = 1
-let g:airline#extensions#tabline#enabled = 1
-
-set encoding=utf-8
-set t_Co=256
-colorscheme badwolf         " awesome colorscheme
 set fillchars+=stl:\ ,stlnc:\
 set laststatus=2
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 14
-set guioptions-=m  "remove menu bar
-set guioptions-=T  "remove toolbar
-set guioptions-=L  "remove left-hand scroll bar
 set clipboard=unnamedplus  "X clipboard as unnamed
 
 " turn off search highlight
@@ -47,7 +35,8 @@ nnoremap <C-p> :action SearchEverywhere<CR>
 nnoremap <C-k> :action PreviousTab<CR>
 nnoremap <C-j> :action NextTab<CR>
 
-map <C-n> :NERDTreeToggle<CR>
+map <leader>q :action CloseEditor<CR>
+map <leader>Q :action CloseAllEditorsButActive<CR>
 
 " move in insert mode
 inoremap <C-w> <C-o>w

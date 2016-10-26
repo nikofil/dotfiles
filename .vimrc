@@ -20,6 +20,7 @@ Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'raimondi/delimitmate'
 Plug 'schickling/vim-bufonly'
+Plug 'henrik/vim-indexed-search'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-repeat'
 Plug 'scrooloose/nerdcommenter'
@@ -62,6 +63,9 @@ let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 2
 let g:Powerline_symbols = 'fancy'
+
+" Indexed-search settings
+let g:indexed_search_numbered_only = 1
 
 " Settings for airline
 let g:airline_powerline_fonts = 1
