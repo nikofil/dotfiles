@@ -1,0 +1,2 @@
+#!/bin/sh
+XDG_CURRENT_DESKTOP=GNOME XDG_CURRENT_DESKTOP=Unity unity-control-center
