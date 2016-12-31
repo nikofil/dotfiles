@@ -15,6 +15,7 @@ Plug 'moll/vim-bbye'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'ludovicchabant/vim-lawrencium'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
@@ -71,6 +72,14 @@ let g:indexed_search_numbered_only = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#use_vcscommand = 1
 let g:airline#extensions#tabline#enabled = 1
+
+" Settings for indent-guides
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=234
+autocmd VimEnter * IndentGuidesEnable
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
 
 set encoding=utf-8
 set t_Co=256
