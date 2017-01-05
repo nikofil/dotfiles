@@ -28,7 +28,7 @@ set laststatus=2
 set clipboard=unnamedplus  "X clipboard as unnamed
 
 " turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR>
+nnoremap ,<space> :nohlsearch<CR>
 " search everywhere
 nnoremap <C-p> :action SearchEverywhere<CR>
 " AceJump with s
@@ -37,8 +37,8 @@ nnoremap s :action AceJumpAction<cr>
 nnoremap <C-k> :action PreviousTab<CR>
 nnoremap <C-j> :action NextTab<CR>
 
-map <leader>q :action CloseEditor<CR>
-map <leader>Q :action CloseAllEditorsButActive<CR>
+map ,q :action CloseEditor<CR>
+map ,Q :action CloseAllEditorsButActive<CR>
 
 " move in insert mode
 inoremap <C-w> <C-o>w
