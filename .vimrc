@@ -75,8 +75,8 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Settings for indent-guides
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=235
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=234
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#252525 ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#292929 ctermbg=234
 autocmd VimEnter * IndentGuidesEnable
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1

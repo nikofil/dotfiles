@@ -19,6 +19,9 @@ alias fv='fasd -f -t -e vim -b viminfo'
 function vf() {
     f $@ | xargs vim
 }
+function vack() {
+    noglob ack -l "$@" | xargs vim
+}
 
 function rcd {
   tempfile='/tmp/ranger-cd'
@@ -151,8 +154,8 @@ alias ggrep="git grep"
 alias ginit="git init"
 alias gl="git log --topo-order --stat --pretty=format:\"${_git_log_medium_format}\""
 alias glast="git log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --stat -1"
-alias glo="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias gls="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --stat"
+alias glo="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches"
+alias gls="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches --stat"
 alias gm="git merge"
 alias gmt="git mergetool"
 alias gmv="git mv"
