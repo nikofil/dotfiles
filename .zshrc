@@ -138,8 +138,8 @@ alias gbib="git bisect bad"
 alias gbig="git bisect good"
 alias gbl="git blame -s"
 alias gc="git commit --signoff"
-alias gca="git commit --amend"
-alias gcaa="git commit --amend --no-edit"
+alias gca="git commit --amend --signoff"
+alias gcaa="git commit --amend --no-edit --signoff"
 alias gch="git checkout"
 alias gcherry="git cherry-pick"
 function gchpr(){git fetch $1 refs/pull/$2/head:pr/$2 && git checkout pr/$2;}
@@ -184,7 +184,7 @@ function gundo() {git reset --hard $(git rev-parse --abbrev-ref HEAD)@\{${1-1}\}
 unalias gcl
 unalias gcm
 function gcm() {
-    git commit -m "$*"
+    git commit --signoff -m "$*"
 }
 
 alias ..='cd ..'
