@@ -20,7 +20,7 @@ function vf() {
     f $@ | xargs vim
 }
 function vack() {
-    noglob ack -l "$@" | xargs vim
+    noglob ack --print0 -l "$@" | xargs -0 vim "+/$@"
 }
 
 function rcd {
@@ -134,8 +134,8 @@ alias ga="git add"
 alias gaa="git add -u"
 alias gb="git branch"
 alias gbi="git bisect"
-alias gbib="git bisect bad"
-alias gbig="git bisect good"
+alias gbin="git bisect bad"
+alias gbiy="git bisect good"
 alias gbl="git blame -s"
 alias gc="git commit --signoff"
 alias gca="git commit --amend --signoff"
