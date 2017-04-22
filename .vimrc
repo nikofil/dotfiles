@@ -26,11 +26,7 @@ Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-repeat'
 Plug 'scrooloose/nerdcommenter'
 Plug 'myusuf3/numbers.vim'
-Plug 'Shougo/deoplete.nvim'
 Plug 'SirVer/ultisnips'
-Plug 'carlitux/deoplete-ternjs'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-Plug 'zchee/deoplete-jedi'
 Plug 'honza/vim-snippets'
 
 " All of your Plugins must be added before the following line
