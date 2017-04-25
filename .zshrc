@@ -12,15 +12,32 @@ unalias f
 function f() {
     q="*"
     for i in $@; do q="$q$i*"; done
-    noglob find . -iwholename "$q"
+    res=$(noglob find . -iwholename "$q")
+    if [[ -z $res ]]; then
+        return 1
+    fi
+    echo $res
 }
 alias ff='fasd -f'
 alias fv='fasd -f -t -e vim -b viminfo'
 function vf() {
-    f $@ | xargs vim
+    found=$(f $@)
+    if [[ $? -eq 0 ]]; then
+        echo -n $found | tr '\n' '\0' | xargs -0 sh -c 'vim "$@" < /dev/tty' vim
+    else
+        return $?
+    fi
 }
 function vack() {
-    noglob ack --print0 -l "$@" | xargs -0 vim "+/$@"
+    param="$@"
+    vimexec="vim '+/$param' \"\$@\" < /dev/tty"
+    found=$(noglob ack --print0 -l "$@")
+    if [[ $? -eq 0 ]]; then
+        echo -n $found | xargs -0 sh -c $vimexec vim
+        return 0
+    else
+        return $?
+    fi
 }
 
 function rcd {
