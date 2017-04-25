@@ -1,12 +1,15 @@
 unmap <C-6>
 map <C-j> nextTab
 map <C-k> previousTab
+map J nextTab
+map K previousTab
 map yf yankUrl
 set noautofocus
 set smoothscroll
 set showtabindices
 map T :tabnew&<space>
-map A :open google<space>
+map a :open google<space>
+map A :tabnew google<space>
 map b :buffer<space>
 map B :bookmarks<space>
 let locale = "uk"
