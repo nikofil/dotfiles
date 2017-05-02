@@ -214,7 +214,7 @@ alias inst="sudo apt-get install"
 alias rmf="rm -rf"
 alias r="ranger"
 function mkcd() {
-    command mkdir $1 && cd $1
+    command mkdir -p $1 && cd $1
 }
 eval $(thefuck --alias)
 eval "$(pyenv init -)"

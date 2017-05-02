@@ -15,8 +15,8 @@ Plug 'moll/vim-bbye'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'ludovicchabant/vim-lawrencium'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'mileszs/ack.vim'
+Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
 Plug 'raimondi/delimitmate'
@@ -69,14 +69,6 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#use_vcscommand = 1
 let g:airline#extensions#tabline#enabled = 1
 
-" Settings for indent-guides
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#252525 ctermbg=235
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#292929 ctermbg=234
-autocmd VimEnter * IndentGuidesEnable
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-
 set encoding=utf-8
 set t_Co=256
 colorscheme badwolf         " awesome colorscheme
@@ -111,6 +103,8 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 " use smartcase
 let g:EasyMotion_smartcase = 1
 let g:ycm_python_binary_path = 'python'
+" indentLine line color
+let g:indentLine_color_term = 239
 
 " deoplete config
 let g:deoplete#enable_at_startup = 1
