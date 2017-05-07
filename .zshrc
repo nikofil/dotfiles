@@ -18,6 +18,15 @@ function f() {
     fi
     echo $res
 }
+function cdf() {
+    q="*"
+    for i in $@; do q="$q$i*"; done
+    res=$(noglob find . -type d -iwholename "$q" | head -1)
+    if [[ -z $res ]]; then
+        return 1
+    fi
+    cd "$res"
+}
 alias ff='fasd -f'
 alias fv='fasd -f -t -e vim -b viminfo'
 function vf() {
