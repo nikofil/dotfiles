@@ -64,11 +64,12 @@ function _rcdw {
 }
 zle -N _rcdw
 
-export PATH=$PATH:$HOME/.cask/bin:$HOME/.pyenv/bin:$HOME/bin
 export GOPATH=$HOME/workspace/go
+export GOBIN=$HOME/workspace/go/bin
 export WORKON_HOME=~/virtenvs
 export VIRTUALENVWRAPPER_WORKON_CD=1
 source /usr/local/bin/virtualenvwrapper.sh
+export PATH=$PATH:$HOME/.cask/bin:$HOME/.pyenv/bin:$HOME/bin:$GOBIN
 
 export EDITOR="vim"
 bindkey -v
