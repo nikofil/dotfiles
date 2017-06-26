@@ -38,7 +38,7 @@ function vf() {
     fi
 }
 function vack() {
-    param="$@"
+    param="${@: -1}"
     vimexec="vim '+/$param' \"\$@\" < /dev/tty"
     found=$(noglob ack --print0 -l "$@")
     if [[ $? -eq 0 ]]; then
@@ -70,6 +70,7 @@ export WORKON_HOME=~/virtenvs
 export VIRTUALENVWRAPPER_WORKON_CD=1
 source /usr/local/bin/virtualenvwrapper.sh
 export PATH=$PATH:$HOME/.cask/bin:$HOME/.pyenv/bin:$HOME/bin:$GOBIN
+export LESS="-Ri"
 
 export EDITOR="vim"
 bindkey -v
@@ -180,6 +181,7 @@ alias gf="git fetch"
 function gfpr(){git fetch $1 refs/pull/$2/head:pr/$2;}
 alias ggrep="git grep"
 alias ginit="git init"
+alias gkeep="git add -i . && git stash -k && git stash drop && git reset"
 alias gl="git log --topo-order --stat --pretty=format:\"${_git_log_medium_format}\""
 alias glast="git log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --stat -1"
 alias glo="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches"
@@ -207,6 +209,7 @@ alias gs="git status -sb"
 alias gsend="git send-email"
 alias gsh="git show"
 alias gst="git stash"
+alias gsti="git stash --patch"
 function gundo() {git reset --hard $(git rev-parse --abbrev-ref HEAD)@\{${1-1}\};}
 
 unalias gcl
