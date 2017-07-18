@@ -32,6 +32,7 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
+  'docker' \
   'git' \
   'archive' \
   'syntax-highlighting' \
