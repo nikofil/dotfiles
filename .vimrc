@@ -28,6 +28,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'myusuf3/numbers.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'ajh17/VimCompletesMe'
+
 
 " All of your Plugins must be added before the following line
 call plug#end()
