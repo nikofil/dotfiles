@@ -75,7 +75,7 @@ export GOBIN=$HOME/workspace/go/bin
 export WORKON_HOME=~/virtenvs
 export VIRTUALENVWRAPPER_WORKON_CD=1
 source /usr/local/bin/virtualenvwrapper.sh
-export PATH=$PATH:$HOME/.cask/bin:$HOME/.pyenv/bin:$HOME/bin:$GOBIN
+export PATH=$PATH:$HOME/.rvm/bin:$HOME/.pyenv/bin:$HOME/bin:$GOBIN
 export LESS="-Ri"
 
 export EDITOR="vim"
@@ -235,9 +235,12 @@ alias r="ranger"
 function mkcd() {
     command mkdir -p $1 && cd $1
 }
-eval $(thefuck --alias)
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+
+# TheFuck
+alias fuck='TF_CMD=$(TF_ALIAS=fuck PYTHONIOENCODING=utf-8 TF_SHELL_ALIASES=$(alias) thefuck $(fc -ln -1 | tail -n 1)) && eval $TF_CMD && print -s $TF_CMD'
+# VirtualEnv
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 # AWS aliases
 alias aws-get-p2='export instanceId=`aws ec2 describe-instances --filters "Name=instance-state-name,Values=stopped,Name=instance-type,Values=p2.xlarge" --query "Reservations[0].Instances[0].InstanceId" | tr -d \"` && echo $instanceId'
@@ -262,10 +265,6 @@ if [[ ! -e ~/.last_fortune || $(cat ~/.last_fortune) != $curdate ]]; then
     fortune | cowsay $COWSTYLE
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# OPAM configuration
-. /home/nikos/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# NVM
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
