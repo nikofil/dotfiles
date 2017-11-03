@@ -122,6 +122,10 @@ else
 endif
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
 inoremap <expr><S-tab> pumvisible() ? "\<C-p>" : "\<S-tab>"
+" Path commands
+command P :echo expand('%:p')
+command Path :echo expand('%:p')
+command Pwd :echo expand('%:p:h')
 " UltiSnips config
 let g:UltiSnipsExpandTrigger="<C-a>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"

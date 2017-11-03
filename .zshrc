@@ -45,7 +45,7 @@ function vack() {
             param="$param2"
         fi
     fi
-    vimexec="vim '+/$param' \"\$@\" < /dev/tty"
+    vimexec="vim '+silent!/$param' \"\$@\" < /dev/tty"
     found=$(noglob ack --print0 -l "$@")
     if [[ $? -eq 0 ]]; then
         echo -n $found | xargs -0 sh -c $vimexec vim
