@@ -262,7 +262,7 @@ if [[ ! -e ~/.last_fortune || $(cat ~/.last_fortune) != $curdate ]]; then
     fortune | cowsay $COWSTYLE
 fi
 
-export NVM_DIR="/home/nikos/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # OPAM configuration
