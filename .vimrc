@@ -89,6 +89,10 @@ nnoremap <leader>q :bp<CR>:bd #<CR>
 " close other tabs
 nnoremap <leader>Q :BufOnly<CR>
 
+" global yank/put
+vnoremap <leader>y :'<,'>write! $HOME/.vim/yankbuffer<CR>
+nnoremap <leader>p :read $HOME/.vim/yankbuffer<CR>
+
 nnoremap <C-k> :bprevious<CR>
 nnoremap <C-j> :bnext<CR>
 
