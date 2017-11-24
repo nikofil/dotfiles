@@ -114,6 +114,8 @@ bindkey "\e[F" end-of-line
 bindkey '^i' expand-or-complete-prefix
 # ranger-cd
 bindkey "^O" _rcdw
+# edit command line
+bindkey -M vicmd v edit-command-line
 
 # ignore double esc
 noop () { }
