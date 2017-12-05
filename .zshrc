@@ -147,6 +147,10 @@ bindkey '^R' history-incremental-search-backward
 # bindkey '^P' history-search-backward
 # bindkey '^N' history-search-forward
 
+unalias rm
+alias rm="nocorrect rm -I"
+setopt rm_star_silent
+
 alias em="emacs -nw"
 alias v="vim"
 alias gv="gvim"
