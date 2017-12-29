@@ -37,16 +37,12 @@ function vf() {
         return $?
     fi
 }
-function vack() {
-    param="${@[-1]}"
-    if [[ ${#@} > 1 ]]; then
-        param2="${@[-2]}"
-        if [[ ${param2[1]} != '-' ]]; then
-            param="$param2"
-        fi
-    fi
+function vag() {
+    for param in $@; do
+        if [[ $param[1] != "-" ]]; then break; fi
+    done
     vimexec="vim '+silent!/$param' \"\$@\" < /dev/tty"
-    found=$(noglob ack --print0 -l "$@")
+    found=$(noglob ag --print0 -l "$@")
     if [[ $? -eq 0 ]]; then
         echo -n $found | xargs -0 sh -c $vimexec vim
         return 0

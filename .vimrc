@@ -130,6 +130,8 @@ inoremap <expr><S-tab> pumvisible() ? "\<C-p>" : "\<S-tab>"
 command P :echo expand('%:p')
 command Path :echo expand('%:p')
 command Pwd :echo expand('%:p:h')
+" Ag command
+command -nargs=* Ag Ack <args>
 " UltiSnips config
 let g:UltiSnipsExpandTrigger="<C-a>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -141,6 +143,8 @@ let g:tern#command = ["tern"]
 let g:tern#arguments = ["--persistent"]
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
+" Use ag for Ack
+let g:ackprg = 'ag --nogroup --nocolor --column'
 " tern
 if exists('g:plugs["tern_for_vim"]')
   let g:tern_show_argument_hints = 'on_hold'
