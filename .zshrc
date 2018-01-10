@@ -9,22 +9,21 @@ unalias d
 alias d="dirs -v"
 alias fd="fasd -d"
 unalias f
-function agfind() {
+function f() {
     if [[ $# -eq 1 ]]; then
         dir='.'
-    elif [[ $# -eq 2 ]]; then
-        dir="$2"
+    elif [[ $# -gt 1 ]]; then
+        dir=(${@:2})
     else
         return 1
     fi
-    res=$(noglob find "$dir" | noglob ag "$1")
+    res=$(noglob find -L $dir | noglob ag "$1")
     if [[ -z $res ]]; then
         return 1
     fi
     echo $res
 }
-alias f='noglob agfind'
-function cdfind() {
+function cdf() {
     found=$(f $@)
     if [[ $? -eq 0 ]]; then
         echo $found | while read res; do
@@ -38,10 +37,9 @@ function cdfind() {
         return $?
     fi
 }
-alias cdf='noglob cdfind'
 alias ff='fasd -f'
 alias fv='fasd -f -t -e vim -b viminfo'
-function vfind() {
+function vf() {
     found=$(f $@)
     if [[ $? -eq 0 ]]; then
         echo -n $found | tr '\n' '\0' | xargs -0 sh -c 'vim "$@" < /dev/tty' vim
@@ -49,7 +47,6 @@ function vfind() {
         return $?
     fi
 }
-alias vf='noglob vfind'
 function vag() {
     for param in $@; do
         if [[ $param[1] != "-" ]]; then break; fi
