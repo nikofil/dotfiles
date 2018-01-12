@@ -159,6 +159,7 @@ setopt rm_star_silent
 
 alias em="emacs -nw"
 alias v="vim"
+alias vl="vim -u ~/.vimlessrc -"
 alias gv="gvim"
 alias sv="sudo vim"
 alias new="i3-sensible-terminal ."

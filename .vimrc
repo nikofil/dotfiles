@@ -91,6 +91,7 @@ nnoremap <leader>Q :BufOnly<CR>
 
 " global yank/put
 vnoremap <leader>y :'<,'>write! $HOME/.vim/yankbuffer<CR>
+nnoremap <leader>y :.write! $HOME/.vim/yankbuffer<CR>
 nnoremap <leader>p :read $HOME/.vim/yankbuffer<CR>
 
 nnoremap <C-k> :bprevious<CR>
@@ -169,6 +170,10 @@ inoremap <C-h> <C-o>h
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
+
+" scroll with up/down
+nmap <Up> <C-y>
+nmap <Down> <C-e>
 
 " close vim if NerdTree is last window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
