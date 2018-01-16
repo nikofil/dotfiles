@@ -98,6 +98,8 @@ nnoremap <C-k> :bprevious<CR>
 nnoremap <C-j> :bnext<CR>
 
 map <C-n> :NERDTreeToggle<CR>
+" cd to current file dir
+nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 
 " EasyMotion bindings
 map  <Leader>f <Plug>(easymotion-bd-f)

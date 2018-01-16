@@ -42,7 +42,16 @@ alias fv='fasd -f -t -e vim -b viminfo'
 function vf() {
     found=$(f $@)
     if [[ $? -eq 0 ]]; then
-        echo -n $found | tr '\n' '\0' | xargs -0 sh -c 'vim "$@" < /dev/tty' vim
+        onlyfiles=()
+        echo $found | while read i; do
+            if [[ -f $i ]]; then
+                onlyfiles+=($i)
+            fi
+        done
+        if [[ -z "$onlyfiles" ]]; then
+            return 1
+        fi
+        printf "%s\0" $onlyfiles | xargs -0 sh -c 'vim "$@" < /dev/tty' vim
     else
         return $?
     fi
