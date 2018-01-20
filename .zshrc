@@ -255,6 +255,7 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias inst="sudo apt-get install"
 alias rmf="rm -rf"
+alias ag="ag --nonumbers"
 alias r="ranger"
 function mkcd() {
     command mkdir -p $1 && cd $1
