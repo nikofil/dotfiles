@@ -77,9 +77,14 @@ function prompt_josh_setup {
     'prompt' ' $(coalesce "%b" "%p" "%c")%s' \
     'rprompt' '%A%B%S%a%d%m%r%U%u'
 
+  RANGERCNT=$(pstree -s -A $$ | tr '-' '\n' | grep -x -c 'ranger')
+  RANGERTXT=""
+  if [[ $RANGERCNT -gt 0 ]]; then
+    RANGERTXT="%F{cyan}($RANGERCNT)%f"
+  fi
   # Define prompts.
   PROMPT='%F{cyan}${_prompt_josh_pwd}%f${git_info:+${(e)git_info[prompt]}}%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
-  RPROMPT='${editor_info[overwrite]}${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]}'
+  RPROMPT='${RANGERTXT}${editor_info[overwrite]}${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]}'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
 
