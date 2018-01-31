@@ -1,0 +1,7 @@
+#!/bin/sh
+mem=$(free -b | grep Mem | sed -rn 's/Mem:[[:space:]]*([[:digit:]]+)[[:space:]]+([[:digit:]]+).*/scale=1;\2*100\/\1/p' | bc -l)
+memi=$(echo "$mem / 30" | bc)
+icons=('▂' '▄' '▆' '█')
+colors=('green' 'yellow' 'red' 'red')
+
+echo "#[fg=${colors[$memi]}] $mem% ${icons[$memi]}"
