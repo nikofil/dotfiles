@@ -4,12 +4,10 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Run Fasd
-eval "$(fasd --init auto)"
 unalias d
 alias d="dirs -v"
 alias fd="fasd -d"
-unalias f
-function f() {
+function _f() {
     if [[ $# -eq 1 ]]; then
         dir='.'
     elif [[ $# -gt 1 ]]; then
@@ -23,7 +21,8 @@ function f() {
     fi
     echo $res
 }
-function cdf() {
+alias f='noglob _f'
+function _cdf() {
     found=$(f $@)
     if [[ $? -eq 0 ]]; then
         echo $found | while read res; do
@@ -37,9 +36,10 @@ function cdf() {
         return $?
     fi
 }
+alias cdf='noglob _cdf'
 alias ff='fasd -f'
 alias fv='fasd -f -t -e vim -b viminfo'
-function vf() {
+function _vf() {
     found=$(f $@)
     if [[ $? -eq 0 ]]; then
         onlyfiles=()
@@ -56,6 +56,8 @@ function vf() {
         return $?
     fi
 }
+alias vf='noglob _vf'
+alias a='noglob ag'
 function vag() {
     for param in $@; do
         if [[ $param[1] != "-" ]]; then break; fi
@@ -69,6 +71,7 @@ function vag() {
         return $?
     fi
 }
+alias va='noglob vag'
 
 function rcd {
   tempfile='/tmp/ranger-cd'
