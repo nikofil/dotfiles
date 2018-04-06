@@ -7,6 +7,7 @@ fi
 unalias d
 alias d="dirs -v"
 alias fd="fasd -d"
+alias z='fasd_cd -d'
 function _f() {
     if [[ $# -eq 1 ]]; then
         dir='.'
