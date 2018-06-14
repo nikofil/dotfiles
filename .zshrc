@@ -58,7 +58,7 @@ function _vf() {
     fi
 }
 alias vf='noglob _vf'
-alias a='noglob ag'
+alias a='noglob ag --nonumbers'
 function vag() {
     for param in $@; do
         if [[ $param[1] != "-" ]]; then break; fi
