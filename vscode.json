@@ -1,0 +1,58 @@
+{
+    "vim.cmdLineInitialColon": true,
+    "vim.easymotion": true,
+    "vim.hlsearch": true,
+    "vim.leader": ",",
+    "vim.useSystemClipboard": true,
+    "vim.visualstar": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<C-j>"],
+            "commands": [
+                {
+                    "command": "workbench.action.nextEditor",
+                }
+            ]
+        },
+        {
+            "before": ["<C-k>"],
+            "commands": [
+                {
+                    "command": "workbench.action.previousEditor",
+                }
+            ]
+        },
+        {
+            "before": ["<leader>", "q"],
+            "commands": [
+                {
+                    "command": "workbench.action.closeActiveEditor",
+                }
+            ]
+        },
+        {
+            "before": ["<leader>", "Q"],
+            "commands": [
+                {
+                    "command": "workbench.action.closeOtherEditors",
+                }
+            ]
+        },
+        {
+            "before": ["<leader>", "W"],
+            "commands": [
+                {
+                    "command": "workbench.action.reopenClosedEditor",
+                }
+            ]
+        },
+        {
+            "before": ["<leader>", "f"],
+            "after": ["<leader>", "<leader>", "s"]
+        },
+        {
+            "before": ["<leader>", "s"],
+            "after": ["<leader>", "<leader>", "2", "s"]
+        }
+    ]
+}
