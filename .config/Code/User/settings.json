@@ -1,4 +1,5 @@
 {
+    "editor.lineNumbers": "relative",
     "vim.cmdLineInitialColon": true,
     "vim.easymotion": true,
     "vim.hlsearch": true,

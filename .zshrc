@@ -94,7 +94,7 @@ export GOBIN=$HOME/workspace/go/bin
 export WORKON_HOME=~/virtenvs
 export VIRTUALENVWRAPPER_WORKON_CD=1
 source /usr/local/bin/virtualenvwrapper.sh
-export PATH=$PATH:$HOME/.rvm/bin:$HOME/.pyenv/bin:$HOME/bin:$GOBIN
+export PATH=$PATH:$HOME/.rvm/bin:$HOME/.pyenv/bin:$HOME/.yarn/bin:$HOME/bin:$GOBIN
 export LESS="-Ri"
 
 export EDITOR="vim"
