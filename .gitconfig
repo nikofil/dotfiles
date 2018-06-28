@@ -38,7 +38,7 @@
     helper = cache --timeout=3600
 
 [merge]
-    tool = meld
+    tool = vimdiff
     defaultToUpstream = true
 
 [mergetool]
@@ -50,7 +50,7 @@
     trustExitCode = false
 
 [diff]
-    tool = meld
+    tool = vimdiff
 
 [difftool]
     prompt = false
