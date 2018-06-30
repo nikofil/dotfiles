@@ -1,4 +1,5 @@
 {
+    "jshint.enable": false,
     "editor.lineNumbers": "relative",
     "vim.cmdLineInitialColon": true,
     "vim.easymotion": true,
@@ -6,6 +7,7 @@
     "vim.leader": ",",
     "vim.useSystemClipboard": true,
     "vim.visualstar": true,
+    "editor.wrappingIndent": "indent",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": ["<C-j>"],
