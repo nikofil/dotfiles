@@ -200,19 +200,19 @@ exec --no-startup-id unity-settings-daemon
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    position top
+  position top
     status_command i3status
     tray_output primary
-    colors{
-        background #232323
-        statusline #DCDCDC
-    }
+  colors {
+    separator #586e75
+    background #002330
+    statusline #aea79f
+    focused_workspace #586e75 #586e75 #ffffff
+    active_workspace #073642 #073642 #ffffff
+    inactive_workspace #002b36 #002b36 #aea79f
+    urgent_workspace #77216f #77216f #ffffff
+  }
 }
-
-client.focused          #3F8AC2 #096BAA #00BAA7 #00DA8E
-client.focused_inactive #333333 #5F676A #ffffff #484e50
-client.unfocused        #333333 #424242 #888888 #292d2e
-client.urgent           #C10004 #900000 #ffffff #900000
 
 exec --no-startup-id sleep 1 && /usr/local/bin/pa-applet
 exec --no-startup-id sleep 1 && /usr/bin/nm-applet
@@ -220,3 +220,8 @@ exec --no-startup-id sleep 3 && setxkbmap -layout us,gr -option grp:win_space_to
 
 # startup workspace
 exec --no-startup-id sleep 3 && if hash startupi3 2>/dev/null; then startupi3; fi
+
+client.focused #0c5c71 #0c5c71 #aab5b5 #00566c
+client.focused_inactive #073642 #073642 #93a1a1 #002b36
+client.unfocused #002b36 #002b36 #586e75 #002b36
+client.urgent #dc322f #dc322f #fdf6e3 #dc322f
