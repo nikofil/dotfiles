@@ -7,6 +7,8 @@
     "vim.leader": ",",
     "vim.useSystemClipboard": true,
     "vim.visualstar": true,
+    "vim.easymotionMarkerFontSize": "17",
+    "vim.easymotionMarkerFontWeight": "bold",
     "editor.wrappingIndent": "indent",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
@@ -34,6 +36,12 @@
             ]
         },
         {
+            "before": ["<leader>", "space"],
+            "commands": [
+                ":nohlsearch"
+            ]
+        },
+        {
             "before": ["<leader>", "Q"],
             "commands": [
                 {
@@ -55,6 +63,10 @@
         },
         {
             "before": ["<leader>", "s"],
+            "after": ["<leader>", "<leader>", "2", "s"]
+        },
+        {
+            "before": ["s"],
             "after": ["<leader>", "<leader>", "2", "s"]
         }
     ]

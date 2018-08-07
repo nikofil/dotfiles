@@ -93,7 +93,7 @@ zle -N _rcdw
 export GOPATH=$HOME/workspace/go
 export GOBIN=$HOME/workspace/go/bin
 export WORKON_HOME=~/virtenvs
-export PATH=$PATH:$HOME/.rvm/bin:$HOME/.pyenv/bin:$HOME/.yarn/bin:$HOME/bin:$GOBIN
+export PATH=$PATH:$HOME/.rvm/bin:$HOME/.pyenv/bin:$HOME/.yarn/bin:$HOME/bin:$HOME/.local/bin:$GOBIN
 export LESS="-Ri"
 
 export EDITOR="vim"
