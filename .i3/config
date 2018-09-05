@@ -49,9 +49,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse set Master 1+ toggle #mute sound
 
 # Pulse Audio controls
-bindsym Mod4+F4 exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
-bindsym Mod4+F3 exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume
-bindsym Mod4+F2 exec --no-startup-id amixer -D pulse set Master 1+ toggle #mute sound
+bindsym Mod4+F3 exec --no-startup-id amixer -D pulse sset Master 5%+ #increase sound volume
+bindsym Mod4+F2 exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume
+bindsym Mod4+F1 exec --no-startup-id amixer -D pulse set Master 1+ toggle #mute sound
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
@@ -153,7 +153,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+p restart
 # i3 exit mode
-set $mode_system System (l) lock, (e) logout, (s) shutdown, (h) hibernate, (r) reboot, (Shift+s) suspend
+set $mode_system System (l) lock, (e) logout, (s) shutdown, (h) hibernate, (r) reboot, (Shift+s) suspend, (w) susplock, (Shift+w) hiberlock
 mode "$mode_system" {
     bindsym l exec --no-startup-id lock, mode "default"
     bindsym e exec --no-startup-id i3exit logout, mode "default"
@@ -161,6 +161,8 @@ mode "$mode_system" {
     bindsym h exec --no-startup-id i3exit hibernate, mode "default"
     bindsym r exec --no-startup-id i3exit reboot, mode "default"
     bindsym Shift+s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym w exec --no-startup-id susplock, mode "default"
+    bindsym Shift+w exec --no-startup-id hiberlock, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
