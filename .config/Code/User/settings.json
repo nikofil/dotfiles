@@ -68,6 +68,14 @@
         {
             "before": ["s"],
             "after": ["<leader>", "<leader>", "2", "s"]
+        },
+        {
+            "before": ["g", "s"],
+            "commands": [
+                {
+                    "command": "editor.action.referenceSearch.trigger"
+                }
+            ]
         }
     ]
 }

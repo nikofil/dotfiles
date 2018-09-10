@@ -92,7 +92,8 @@ zle -N _rcdw
 
 export GOPATH=$HOME/workspace/go
 export GOBIN=$HOME/workspace/go/bin
-export WORKON_HOME=~/virtenvs
+export WORKON_HOME=$HOME/virtenvs
+export PROJECT_HOME=$HOME/workspace
 export PATH=$PATH:$HOME/.rvm/bin:$HOME/.pyenv/bin:$HOME/.yarn/bin:$HOME/bin:$HOME/.local/bin:$GOBIN
 export LESS="-Ri"
 
@@ -267,8 +268,10 @@ function mkcd() {
 # TheFuck
 alias fuck='TF_CMD=$(TF_ALIAS=fuck PYTHONIOENCODING=utf-8 TF_SHELL_ALIASES=$(alias) thefuck $(fc -ln -1 | tail -n 1)) && eval $TF_CMD && print -s $TF_CMD'
 # VirtualEnv
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
+if which virtualenvwrapper.sh > /dev/null; then
+    export VIRTUAL_ENV_DISABLE_PROMPT=1
+    source "$(which virtualenvwrapper.sh)"
+fi
 
 # AWS aliases
 alias aws-get-p2='export instanceId=`aws ec2 describe-instances --filters "Name=instance-state-name,Values=stopped,Name=instance-type,Values=p2.xlarge" --query "Reservations[0].Instances[0].InstanceId" | tr -d \"` && echo $instanceId'
