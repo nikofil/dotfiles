@@ -223,7 +223,7 @@ exec --no-startup-id sleep 3 && setxkbmap -layout us,gr -option grp:win_space_to
 # startup workspace
 exec --no-startup-id sleep 3 && if hash startupi3 2>/dev/null; then startupi3; fi
 
-client.focused #0c5c71 #0c5c71 #aab5b5 #00566c
-client.focused_inactive #073642 #073642 #93a1a1 #002b36
+client.focused #0f7691 #0f7691 #aab5b5 #00566c
+client.focused_inactive #0b5669 #0b5669 #93a1a1 #002b36
 client.unfocused #05303b #002b36 #586e75 #002b36
 client.urgent #dc322f #dc322f #fdf6e3 #dc322f
