@@ -70,6 +70,14 @@
             "after": ["<leader>", "<leader>", "2", "s"]
         },
         {
+            "before": ["<C-t>"],
+            "commands": [
+                {
+                    "command": "workbench.action.showAllSymbols"
+                }
+            ]
+        },
+        {
             "before": ["g", "s"],
             "commands": [
                 {
@@ -77,5 +85,6 @@
                 }
             ]
         }
-    ]
+    ],
+    "python.venvPath": "/home/nikos/virtenvs"
 }

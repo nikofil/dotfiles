@@ -28,6 +28,7 @@ Plug 'myusuf3/numbers.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ajh17/VimCompletesMe'
+Plug 'rodjek/vim-puppet'
 
 
 " All of your Plugins must be added before the following line
