@@ -9,15 +9,24 @@ alias d="dirs -v"
 alias fd="fasd -d"
 alias z='fasd_cd -d'
 alias zz='fasd_cd -d -i'
+function _glob_expand() {
+    res=()
+    for param in $@; do
+        res+=("$(zsh -c "print -l $param")")
+    done
+    if [[ $res != "" ]]; then
+        print -l $res
+    fi
+}
 function _f() {
     if [[ $# -eq 1 ]]; then
-        dir='.'
+        fdir='.'
     elif [[ $# -gt 1 ]]; then
-        dir=(${@:2})
+        fdir=$(_glob_expand ${@:2})
     else
         return 1
     fi
-    res=$(noglob find -L $dir | noglob ag "$1")
+    res=$(echo $fdir | xargs -d '\n' find -L | ag "$1")
     if [[ -z $res ]]; then
         return 1
     fi
@@ -46,7 +55,8 @@ function _vf() {
     if [[ $? -eq 0 ]]; then
         onlyfiles=()
         echo $found | while read i; do
-            if [[ -f $i ]]; then
+            ftype=$(file -bL --mime "$i")
+            if [[ -f "$i" && ((! "$ftype" =~ "binary" ) || "$ftype" =~ "x-empty") ]]; then
                 onlyfiles+=($i)
             fi
         done
@@ -59,13 +69,25 @@ function _vf() {
     fi
 }
 alias vf='noglob _vf'
-alias a='noglob ag --nonumbers'
-function vag() {
+function _a() {
+    let cnt=1
+    lastparam=""
     for param in $@; do
-        if [[ $param[1] != "-" ]]; then break; fi
+        if [[ $param[1] != "-" || lastparam == "--" ]]; then break; fi
+        lastparam=$param
+        let cnt=cnt+1
+    done
+    _glob_expand ${@:$cnt+1} | xargs -d '\n' ag ${@:1:$cnt}
+}
+alias a='noglob _a --nonumbers --hidden'
+function _va() {
+    lastparam=""
+    for param in $@; do
+        if [[ $param[1] != "-" || lastparam == "--" ]]; then break; fi
+        lastparam=$param
     done
     vimexec="vim '+silent!/$param' \"\$@\" < /dev/tty"
-    found=$(noglob ag --print0 -l "$@")
+    found=$(a --print0 -l $@)
     if [[ $? -eq 0 ]]; then
         echo -n $found | xargs -0 sh -c $vimexec vim
         return 0
@@ -73,7 +95,7 @@ function vag() {
         return $?
     fi
 }
-alias va='noglob vag'
+alias va='noglob _va'
 
 function rcd {
   tempfile='/tmp/ranger-cd'

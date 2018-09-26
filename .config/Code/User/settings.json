@@ -86,5 +86,6 @@
             ]
         }
     ],
-    "python.venvPath": "/home/nikos/virtenvs"
+    "python.venvPath": "/home/nikos/virtenvs",
+    "window.zoomLevel": 0
 }
