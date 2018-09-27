@@ -77,7 +77,7 @@ function _a() {
         lastparam=$param
         let cnt=cnt+1
     done
-    _glob_expand ${@:$cnt+1} | xargs -d '\n' ag ${@:1:$cnt}
+    xargs -a <(_glob_expand ${@:$cnt+1}) -d '\n' ag ${@:1:$cnt}
 }
 alias a='noglob _a --nonumbers --hidden'
 function _va() {
