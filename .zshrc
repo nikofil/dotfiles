@@ -117,6 +117,9 @@ export GOBIN=$HOME/workspace/go/bin
 export WORKON_HOME=$HOME/virtenvs
 export PROJECT_HOME=$HOME/workspace
 export PATH=$PATH:$HOME/.rvm/bin:$HOME/.pyenv/bin:$HOME/.yarn/bin:$HOME/bin:$HOME/.local/bin:$GOBIN
+if [[ -e $HOME/lib ]]; then
+    export LD_LIBRARY_PATH=$HOME/lib
+fi
 export LESS="-Ri"
 
 export EDITOR="vim"
@@ -290,7 +293,7 @@ function mkcd() {
 # TheFuck
 alias fuck='TF_CMD=$(TF_ALIAS=fuck PYTHONIOENCODING=utf-8 TF_SHELL_ALIASES=$(alias) thefuck $(fc -ln -1 | tail -n 1)) && eval $TF_CMD && print -s $TF_CMD'
 # VirtualEnv
-if which virtualenvwrapper.sh > /dev/null; then
+if type virtualenvwrapper.sh &> /dev/null; then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
     source "$(which virtualenvwrapper.sh)"
 fi
@@ -305,17 +308,19 @@ alias aws-stop='aws ec2 stop-instances --instance-ids $instanceId'
 alias aws-status='aws ec2 describe-instance-status --include-all-instances'
 
 # moo
-curdate=$(date +%m/%d/%y)
-if [[ ! -e ~/.last_fortune || $(cat ~/.last_fortune) != $curdate ]]; then
-    echo $curdate >! ~/.last_fortune
-    COWSTYLES="bdgpstwy"
-    RANDCOW=$[ ( $RANDOM % 9 ) ]
-    if [[ $RANDCOW > 0 ]]; then
-        COWSTYLE="-${COWSTYLES[$RANDCOW]}"
-    else
-        COWSTYLE=""
+if type fortune &> /dev/null && type cowsay &> /dev/null; then
+    curdate=$(date +%m/%d/%y)
+    if [[ ! -e ~/.last_fortune || $(cat ~/.last_fortune) != $curdate ]]; then
+        echo $curdate >! ~/.last_fortune
+        COWSTYLES="bdgpstwy"
+        RANDCOW=$[ ( $RANDOM % 9 ) ]
+        if [[ $RANDCOW > 0 ]]; then
+            COWSTYLE="-${COWSTYLES[$RANDCOW]}"
+        else
+            COWSTYLE=""
+        fi
+        fortune | cowsay $COWSTYLE
     fi
-    fortune | cowsay $COWSTYLE
 fi
 
 # NVM

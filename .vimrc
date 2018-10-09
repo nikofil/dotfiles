@@ -90,7 +90,7 @@ nnoremap <leader>q :bp<CR>:bd #<CR>
 nnoremap <leader>Q :BufOnly<CR>
 
 " global yank/put
-vnoremap <leader>y :'<,'>write! $HOME/.vim/yankbuffer<CR>
+vnoremap <leader>y :write! $HOME/.vim/yankbuffer<CR>
 nnoremap <leader>y :.write! $HOME/.vim/yankbuffer<CR>
 nnoremap <leader>p :read $HOME/.vim/yankbuffer<CR>
 

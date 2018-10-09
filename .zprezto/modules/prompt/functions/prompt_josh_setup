@@ -77,7 +77,7 @@ function prompt_josh_setup {
     'prompt' ' $(coalesce "%b" "%p" "%c")%s' \
     'rprompt' '%A%B%S%a%d%m%r%U%u'
 
-  RANGERCNT=$(pstree -s -A $$ | tr '-' '\n' | grep -x -c 'ranger')
+  RANGERCNT=$(ps | awk '{ print $4 }' | grep -x -c 'ranger')
   RANGERTXT=""
   if [[ $RANGERCNT -gt 0 ]]; then
     RANGERTXT="%F{cyan}($RANGERCNT)%f"
