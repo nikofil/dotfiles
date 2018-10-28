@@ -74,5 +74,9 @@
         "key": "shift+f8",
         "command": "-editor.action.marker.prevInFiles",
         "when": "editorFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+f8",
+        "command": "workbench.action.tasks.runTask"
     }
 ]

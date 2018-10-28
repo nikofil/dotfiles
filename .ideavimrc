@@ -32,7 +32,8 @@ nnoremap ,<space> :nohlsearch<CR>
 " search everywhere
 nnoremap <C-p> :action SearchEverywhere<CR>
 " AceJump with s
-nnoremap s :action AceJumpAction<cr>
+nnoremap s :action AceAction<CR>
+nnoremap X :action ReopenClosedTab<CR>
 
 nnoremap <C-k> :action PreviousTab<CR>
 nnoremap <C-j> :action NextTab<CR>
