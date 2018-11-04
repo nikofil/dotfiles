@@ -9,6 +9,8 @@ alias d="dirs -v"
 alias fd="fasd -d"
 alias z='fasd_cd -d'
 alias zz='fasd_cd -d -i'
+
+# a and f
 function _glob_expand() {
     res=()
     for param in $@; do
@@ -97,6 +99,7 @@ function _va() {
 }
 alias va='noglob _va'
 
+# rcd
 function rcd {
   tempfile='/tmp/ranger-cd'
   ranger --choosedir="$tempfile" "${@:-$(pwd)}"
@@ -116,11 +119,15 @@ export GOPATH=$HOME/workspace/go
 export GOBIN=$HOME/workspace/go/bin
 export WORKON_HOME=$HOME/virtenvs
 export PROJECT_HOME=$HOME/workspace
-export PATH=$PATH:$HOME/.rvm/bin:$HOME/.pyenv/bin:$HOME/.yarn/bin:$HOME/bin:$HOME/.local/bin:$GOBIN
+export PATH=$PATH:$HOME/.rvm/bin:$HOME/.pyenv/bin:$HOME/.yarn/bin:$HOME/bin:$HOME/.local/bin:$GOBIN:$HOME/bin/fzf/bin
 if [[ -e $HOME/lib ]]; then
     export LD_LIBRARY_PATH=$HOME/lib
 fi
 export LESS="-Ri"
+
+# fzf
+[[ $- == *i* ]] && source "$HOME/bin/fzf/shell/completion.zsh" 2> /dev/null
+source "$HOME/bin/fzf/shell/key-bindings.zsh"
 
 export EDITOR="vim"
 bindkey -v
@@ -186,7 +193,7 @@ ZSH_HIGHLIGHT_STYLES[globbing]='fg=cyan'
 bindkey '^B' push-line
 
 # vi style incremental search
-bindkey '^R' history-incremental-search-backward
+# bindkey '^R' history-incremental-search-backward
 # bindkey '^S' history-incremental-search-forward
 # bindkey '^P' history-search-backward
 # bindkey '^N' history-search-forward

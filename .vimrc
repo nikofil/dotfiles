@@ -29,6 +29,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ajh17/VimCompletesMe'
 Plug 'rodjek/vim-puppet'
+Plug 'junegunn/fzf'
 
 
 " All of your Plugins must be added before the following line
