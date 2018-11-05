@@ -58,11 +58,14 @@ set smartcase           " do smart case matching
 set hidden
 
 " CtrlP settings
-let g:ctrlp_cmd='CtrlP :pwd'
+let g:ctrlp_cmd='CtrlPBuffer'
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 2
 let g:Powerline_symbols = 'fancy'
+
+nnoremap <C-m> :CtrlPMRU<CR>
+nnoremap <C-t> :FZF<CR>
 
 " Indexed-search settings
 let g:indexed_search_numbered_only = 1
@@ -116,20 +119,6 @@ let g:ycm_python_binary_path = 'python'
 " indentLine line color
 let g:indentLine_color_term = 239
 
-" deoplete config
-let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-" let g:deoplete#disable_auto_complete = 1
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-if has("gui_running")
-    inoremap <silent><expr><C-Space> deoplete#mappings#manual_complete()
-else
-    inoremap <silent><expr><C-@> deoplete#mappings#manual_complete()
-endif
-inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
-inoremap <expr><S-tab> pumvisible() ? "\<C-p>" : "\<S-tab>"
 " Path commands
 command P :echo expand('%:p')
 command Path :echo expand('%:p')
