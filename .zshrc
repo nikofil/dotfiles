@@ -52,6 +52,7 @@ function _cdf() {
 alias cdf='noglob _cdf'
 alias ff='fasd -f'
 alias fv='fasd -f -t -e vim -b viminfo'
+alias vt='v $(fzf)'
 function _vf() {
     found=$(f $@)
     if [[ $? -eq 0 ]]; then
