@@ -58,13 +58,12 @@ set smartcase           " do smart case matching
 set hidden
 
 " CtrlP settings
-let g:ctrlp_cmd='CtrlPBuffer'
+let g:ctrlp_cmd='CtrlPMRU'
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 2
 let g:Powerline_symbols = 'fancy'
 
-nnoremap <C-m> :CtrlPMRU<CR>
 nnoremap <C-t> :FZF<CR>
 
 " Indexed-search settings
@@ -115,7 +114,6 @@ map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 " use smartcase
 let g:EasyMotion_smartcase = 1
-let g:ycm_python_binary_path = 'python'
 " indentLine line color
 let g:indentLine_color_term = 239
 
@@ -134,25 +132,8 @@ let g:tern_request_timeout = 1
 " Use tern_for_vim.
 let g:tern#command = ["tern"]
 let g:tern#arguments = ["--persistent"]
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
 " Use ag for Ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
-" tern
-if exists('g:plugs["tern_for_vim"]')
-  let g:tern_show_argument_hints = 'on_hold'
-  let g:tern_show_signature_in_pum = 1
-  autocmd FileType javascript setlocal omnifunc=tern#Complete
-endif
-" omnifuncs
-augroup omnifuncs
-  autocmd!
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-augroup end
 
 " move in insert mode
 inoremap <C-w> <C-o>w
