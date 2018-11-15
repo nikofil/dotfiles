@@ -91,6 +91,8 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <leader>q :bp<CR>:bd #<CR>
 " close other tabs
 nnoremap <leader>Q :BufOnly<CR>
+" start an Ag search
+nnoremap <leader>a :Ag<space>
 
 " global yank/put
 vnoremap <leader>y :write! $HOME/.vim/yankbuffer<CR>

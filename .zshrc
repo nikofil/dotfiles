@@ -211,6 +211,8 @@ alias sv="sudo vim"
 alias new="i3-sensible-terminal ."
 
 alias extract="aunpack"
+alias xcopy="xclip -selection clipboard"
+alias xpaste="xclip -selection clipboard -o"
 
 alias tmux="tmux -2"
 alias tm="tmux"
