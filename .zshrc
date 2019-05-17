@@ -100,6 +100,14 @@ function _va() {
 }
 alias va='noglob _va'
 
+function psa() {
+    psres=$(ps axk -%cpu o user,pid,pgid,%cpu,%mem,rss,stat,start,time,command)
+    for i in $@; do
+        psres=$(echo $psres | a --color $i)
+    done
+    echo $psres
+}
+
 # rcd
 function rcd {
   tempfile='/tmp/ranger-cd'

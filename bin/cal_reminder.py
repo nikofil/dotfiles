@@ -49,14 +49,12 @@ def get_calendar_strs():
         os.mkdir(TMP_DIR)
     dt_now = datetime.datetime.utcnow()
     now = dt_now.isoformat() + 'Z'
+    cur = dateutil.parser.parse(now)
     until = (datetime.datetime.utcnow() + DT).isoformat() + 'Z'
     if (dt_now.second == 0 and dt_now.minute % 10 == 0) or not os.path.isfile(CACHED_EVENTS):
-        try:
-            events = event_list(now, until)
-            with open(CACHED_EVENTS, 'w') as fcache:
-                json.dump(events, fcache)
-        except Exception as exc:
-            return (str(exc), None)
+        events = event_list(now, until)
+        with open(CACHED_EVENTS, 'w') as fcache:
+            json.dump(events, fcache)
     else:
         with open(CACHED_EVENTS, 'r') as fcache:
             events = json.load(fcache)
@@ -71,9 +69,11 @@ def get_calendar_strs():
             if summary is None:
                 continue
             startTime = event.get('start', {}).get('dateTime')
+            endTime = event.get('end', {}).get('dateTime')
+            if dateutil.parser.parse(endTime) <= cur:
+                continue
             if startTime is not None:
                 start = dateutil.parser.parse(startTime)
-                cur = dateutil.parser.parse(now)
                 if start < cur:
                     started.append(summary)
                 else:
@@ -85,8 +85,8 @@ def get_calendar_strs():
         if future is not None:
             summary, delta = future
             secs = delta.seconds
-            hours = secs/3600
-            mins = (secs%3600 + 59) / 60
+            hours = secs // 3600
+            mins = (secs%3600 + 59) // 60
             if hours == 0:
                 next_event = '{} in {}m'.format(summary, mins)
             else:

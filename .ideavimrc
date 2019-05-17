@@ -31,6 +31,7 @@ set clipboard=unnamedplus  "X clipboard as unnamed
 nnoremap ,<space> :nohlsearch<CR>
 " search everywhere
 nnoremap <C-p> :action SearchEverywhere<CR>
+nnoremap <C-t> :action SearchEverywhere<CR>
 " AceJump with s
 nnoremap s :action AceAction<CR>
 nnoremap X :action ReopenClosedTab<CR>
