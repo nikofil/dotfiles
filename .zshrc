@@ -300,12 +300,27 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
+alias diff="colordiff"
 alias inst="sudo apt-get install"
 alias rmf="rm -rf"
 alias ag="ag --nonumbers"
 alias r="ranger"
+alias wl="wunderline"
 function mkcd() {
     command mkdir -p $1 && cd $1
+}
+# Wunderline remind in hours / days
+function wlh() {
+    wldate=$(python -c "from datetime import datetime, timedelta; print (datetime.now() + timedelta(hours=$1)).strftime('%Y-%m-%d %H:%M')")
+    wl add --reminder "$wldate" --due "$(echo $wldate | cut -d' ' -f1)" "${@[@]:2}"
+}
+function wld() {
+    wldate=$(python -c "from datetime import datetime, timedelta; print (datetime.now() + timedelta(days=$1)).strftime('%Y-%m-%d %H:%M')")
+    wl add --reminder "$wldate" --due "$(echo $wldate | cut -d' ' -f1)" "${@[@]:2}"
+}
+function wldh() {
+    wldate=$(python -c "from datetime import datetime, timedelta; print (datetime.now() + timedelta(days=$1, hours=$2)).strftime('%Y-%m-%d %H:%M')")
+    wl add --reminder "$wldate" --due "$(echo $wldate | cut -d' ' -f1)" "${@[@]:3}"
 }
 
 # TheFuck

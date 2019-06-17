@@ -70,7 +70,7 @@ def get_calendar_strs():
                 continue
             startTime = event.get('start', {}).get('dateTime')
             endTime = event.get('end', {}).get('dateTime')
-            if dateutil.parser.parse(endTime) <= cur:
+            if endTime is not None and dateutil.parser.parse(endTime) <= cur:
                 continue
             if startTime is not None:
                 start = dateutil.parser.parse(startTime)

@@ -82,8 +82,15 @@ function prompt_josh_setup {
   if [[ $RANGERCNT -gt 0 ]]; then
     RANGERTXT="%F{cyan}($RANGERCNT)%f"
   fi
+  # User info
+  user_info=""
+  if [ -n "$SSH_CLIENT" ]; then
+    user_info+=" %F{green}%n%f"  # Magenta user name
+    user_info+="@"
+    user_info+="%F{blue}${${(%):-%m}}%f" # Blue host name, minus zoltan
+  fi
   # Define prompts.
-  PROMPT='%F{cyan}${_prompt_josh_pwd}%f${git_info:+${(e)git_info[prompt]}}%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
+  PROMPT='%F{cyan}${_prompt_josh_pwd}%f${git_info:+${(e)git_info[prompt]}}%(!. %B%F{red}#%f%b.)${user_info}${editor_info[keymap]} '
   RPROMPT='${RANGERTXT}${editor_info[overwrite]}${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]}'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }

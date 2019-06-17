@@ -1,2 +1,4 @@
 .i3/*.json
 .gdb_history
+bin/__pycache__
+bin/*.pyc
