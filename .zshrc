@@ -310,17 +310,18 @@ function mkcd() {
     command mkdir -p $1 && cd $1
 }
 # Wunderline remind in hours / days
+function wldh() {
+    wldate=$(python -c "import sys; from datetime import datetime, timedelta;
+d = datetime.now() + timedelta(days=$1, hours=$2);
+sys.stderr.write('Reminder on: {}\n'.format(d.strftime('%A %Y-%m-%d %H:%M')));
+print d.strftime('%Y-%m-%d %H:%M');")
+    wl add --reminder "$wldate" --due "$(echo $wldate | cut -d' ' -f1)" "${@[@]:3}"
+}
 function wlh() {
-    wldate=$(python -c "from datetime import datetime, timedelta; print (datetime.now() + timedelta(hours=$1)).strftime('%Y-%m-%d %H:%M')")
-    wl add --reminder "$wldate" --due "$(echo $wldate | cut -d' ' -f1)" "${@[@]:2}"
+    wldh 0 $1 "${@[@]:2}"
 }
 function wld() {
-    wldate=$(python -c "from datetime import datetime, timedelta; print (datetime.now() + timedelta(days=$1)).strftime('%Y-%m-%d %H:%M')")
-    wl add --reminder "$wldate" --due "$(echo $wldate | cut -d' ' -f1)" "${@[@]:2}"
-}
-function wldh() {
-    wldate=$(python -c "from datetime import datetime, timedelta; print (datetime.now() + timedelta(days=$1, hours=$2)).strftime('%Y-%m-%d %H:%M')")
-    wl add --reminder "$wldate" --due "$(echo $wldate | cut -d' ' -f1)" "${@[@]:3}"
+    wldh $1 0 "${@[@]:2}"
 }
 
 # TheFuck

@@ -30,6 +30,7 @@ Plug 'honza/vim-snippets'
 Plug 'ajh17/VimCompletesMe'
 Plug 'rodjek/vim-puppet'
 Plug 'junegunn/fzf'
+Plug 'posva/vim-vue'
 
 
 " All of your Plugins must be added before the following line
@@ -114,6 +115,7 @@ map <Leader>L <Plug>(easymotion-bd-jk)
 nmap <Leader>L <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
+vmap s <Plug>(easymotion-f2)
 " use smartcase
 let g:EasyMotion_smartcase = 1
 " indentLine line color
