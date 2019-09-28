@@ -6,6 +6,7 @@ import pickle
 import os
 import os.path
 import json
+import sys
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -22,26 +23,33 @@ def event_list(now, until):
     """Shows basic usage of the Google Calendar API.
     Prints the start and name of the next 10 events on the user's calendar.
     """
-    creds = None
-    # The file token.pickle stores the user's access and refresh tokens, and is
-    # created automatically when the authorization flow completes for the first
-    # time.
-    if os.path.exists(TOKEN_PICKLE):
-        with open(TOKEN_PICKLE, 'rb') as token:
-            creds = pickle.load(token)
-    # If there are no (valid) credentials available, let the user log in.
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(CREDS_JSON, SCOPES)
-            creds = flow.run_local_server()
-        # Save the credentials for the next run
-        with open(TOKEN_PICKLE, 'wb') as token:
-            pickle.dump(creds, token)
-    service = build('calendar', 'v3', credentials=creds)
-    return service.events().list(calendarId='primary', timeMin=now, timeMax=until,
-        maxResults=10, singleEvents=True, orderBy='startTime').execute().get('items', [])
+    old_stdout = sys.stdout
+    try:
+        with open(os.devnull, "w") as devnull:
+            sys.stdout = devnull
+            creds = None
+            # The file token.pickle stores the user's access and refresh tokens, and is
+            # created automatically when the authorization flow completes for the first
+            # time.
+            if os.path.exists(TOKEN_PICKLE):
+                with open(TOKEN_PICKLE, 'rb') as token:
+                    creds = pickle.load(token)
+            # If there are no (valid) credentials available, let the user log in.
+            if not creds or not creds.valid:
+                if creds and creds.expired and creds.refresh_token:
+                    creds.refresh(Request())
+                else:
+                    flow = InstalledAppFlow.from_client_secrets_file(CREDS_JSON, SCOPES)
+                    creds = flow.run_local_server()
+                # Save the credentials for the next run
+                with open(TOKEN_PICKLE, 'wb') as token:
+                    pickle.dump(creds, token)
+            service = build('calendar', 'v3', credentials=creds)
+            return service.events().list(calendarId='primary', timeMin=now, timeMax=until,
+                                         maxResults=10, singleEvents=True, orderBy='startTime'
+                                        ).execute().get('items', [])
+    finally:
+        sys.stdout = old_stdout
 
 def get_calendar_strs():
     # Call the Calendar API

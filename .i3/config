@@ -203,7 +203,7 @@ exec --no-startup-id unity-settings-daemon
 # finds out, if available)
 bar {
   position top
-    status_command "i3status | ~/bin/i3status-custom"
+    status_command "i3status | python ~/bin/i3status-custom"
     tray_output primary
   colors {
     separator #586e75
