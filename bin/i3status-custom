@@ -49,7 +49,6 @@ def read_line():
         sys.exit()
 
 if __name__ == '__main__':
-    try:
         # Skip the first line which contains the version header.
         print_line(read_line())
 
@@ -59,27 +58,28 @@ if __name__ == '__main__':
         cur_event, next_event = None, None
 
         while True:
-            line, prefix = read_line(), ''
-            # ignore comma at start of lines
-            if line.startswith(','):
-                line, prefix = line[1:], ','
+            try:
+                line, prefix = read_line(), ''
+                # ignore comma at start of lines
+                if line.startswith(','):
+                    line, prefix = line[1:], ','
 
-            j = json.loads(line)
-            # insert information into the start of the json, but could be anywhere
-            # CHANGE THIS LINE TO INSERT SOMETHING ELSE
-            prev_event, prev_next_event = cur_event, next_event
-            cur_event, next_event = get_calendar_strs()
-            if cur_event != prev_event and cur_event is not None:
-                subprocess.Popen(['notify-send', '-t', '10000', 'Current event', cur_event])
-            elif next_event is not None and prev_next_event is None:
-                subprocess.Popen(['notify-send', '-t', '10000', 'Next event', next_event])
-            if next_event is not None:
-                j.insert(0, {'full_text': next_event, 'name': 'cal_next'})
-            if cur_event is not None:
-                j.insert(0, {'full_text': cur_event, 'name': 'cal_cur'})
-            # and echo back new encoded json
-            print_line(prefix+json.dumps(j))
-    except Exception:
-        import traceback
-        with open('/tmp/i3error.txt', 'w') as f:
-            f.write(traceback.format_exc())
+                j = json.loads(line)
+                # insert information into the start of the json, but could be anywhere
+                # CHANGE THIS LINE TO INSERT SOMETHING ELSE
+                prev_event, prev_next_event = cur_event, next_event
+                cur_event, next_event = get_calendar_strs()
+                if cur_event != prev_event and cur_event is not None:
+                    subprocess.Popen(['notify-send', '-t', '10000', 'Current event', cur_event])
+                elif next_event is not None and prev_next_event is None:
+                    subprocess.Popen(['notify-send', '-t', '10000', 'Next event', next_event])
+                if next_event is not None:
+                    j.insert(0, {'full_text': next_event, 'name': 'cal_next'})
+                if cur_event is not None:
+                    j.insert(0, {'full_text': cur_event, 'name': 'cal_cur'})
+                # and echo back new encoded json
+                print_line(prefix+json.dumps(j))
+            except Exception:
+                import traceback
+                with open('/tmp/i3error.txt', 'w') as f:
+                    f.write(traceback.format_exc())

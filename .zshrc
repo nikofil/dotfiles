@@ -11,6 +11,8 @@ alias z='fasd_cd -d'
 alias zz='fasd_cd -d -i'
 
 # a and f
+alias ag="rg --no-line-number"
+
 function _glob_expand() {
     res=()
     for param in $@; do
@@ -42,6 +44,8 @@ function _cdf() {
             if [[ -d $res ]]; then
                 cd "$res"
                 return 0
+            else
+                cd "$(dirname $res)"
             fi
         done
         return 1
@@ -50,6 +54,9 @@ function _cdf() {
     fi
 }
 alias cdf='noglob _cdf'
+function cdb() {
+    cd "$(dirname $1)"
+}
 alias ff='fasd -f'
 alias fv='fasd -f -t -e vim -b viminfo'
 alias vt='v $(fzf)'
@@ -80,9 +87,9 @@ function _a() {
         lastparam=$param
         let cnt=cnt+1
     done
-    xargs -a <(_glob_expand ${@:$cnt+1}) -d '\n' ag ${@:1:$cnt}
+    xargs -a <(_glob_expand ${@:$cnt+1}) -d '\n' rg ${@:1:$cnt}
 }
-alias a='noglob _a --nonumbers --hidden'
+alias a='RIPGREP_CONFIG_PATH=$HOME/.ripgreprc noglob _a --ignore-file=$HOME/.agignore'
 function _va() {
     lastparam=""
     for param in $@; do
@@ -90,7 +97,7 @@ function _va() {
         lastparam=$param
     done
     vimexec="vim '+silent!/$param' \"\$@\" < /dev/tty"
-    found=$(a --print0 -l $@)
+    found=$(a --null -l $@)
     if [[ $? -eq 0 ]]; then
         echo -n $found | xargs -0 sh -c $vimexec vim
         return 0
@@ -103,9 +110,12 @@ alias va='noglob _va'
 function psa() {
     psres=$(ps axk -%cpu o user,pid,pgid,%cpu,%mem,rss,stat,start,time,command)
     for i in $@; do
-        psres=$(echo $psres | a --color $i)
+        psres=$(echo $psres | a -p --no-line-number $i)
     done
     echo $psres
+}
+function kpsa() {
+    psa $@ | awk '{print $2}' | xargs kill
 }
 
 # rcd
@@ -216,6 +226,15 @@ alias v="vim"
 alias vl="vim -u ~/.vimlessrc -"
 alias gv="gvim"
 alias sv="sudo vim"
+function vout() {
+    tmpfile=$(mktemp)
+    if [[ $# -eq 1 ]]; then
+        /bin/cp "$1" "$tmpfile"
+    fi
+    v "$tmpfile" > /dev/tty
+    cat "$tmpfile"
+    rm "$tmpfile"
+}
 alias new="i3-sensible-terminal ."
 
 alias extract="aunpack"
@@ -233,6 +252,8 @@ alias tmks="tmux kill-session"
 alias tmr="tmux resize-pane"
 alias tmrl="tmux resize-pane -L"
 alias tmrr="tmux resize-pane -R"
+
+alias dke='dk exec -it $(dk ps -ql -f status=running)'
 
 alias ga="git add"
 alias gaa="git add -u"
@@ -303,7 +324,6 @@ alias ......='cd ../../../../..'
 alias diff="colordiff"
 alias inst="sudo apt-get install"
 alias rmf="rm -rf"
-alias ag="ag --nonumbers"
 alias r="ranger"
 alias wl="wunderline"
 function mkcd() {
@@ -360,3 +380,7 @@ fi
 # NVM
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
+# kubectl autocompletion
+alias kb=kubectl
+source <(kubectl completion zsh)
