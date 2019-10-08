@@ -254,6 +254,7 @@ alias tmrl="tmux resize-pane -L"
 alias tmrr="tmux resize-pane -R"
 
 alias dke='dk exec -it $(dk ps -ql -f status=running)'
+alias dkr='dk run --rm -it'
 
 alias ga="git add"
 alias gaa="git add -u"
@@ -280,7 +281,7 @@ alias ggrep="git grep"
 alias ginit="git init"
 alias gkeep="git add -i . && git stash -k && git stash drop && git reset"
 alias gl="git log --topo-order --stat --pretty=format:\"${_git_log_medium_format}\""
-alias glast="git log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --stat -1"
+alias glast="git log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --stat -1 | cat"
 alias glo="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gloo="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches HEAD"
 alias gls="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches --stat"
