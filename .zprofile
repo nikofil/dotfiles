@@ -22,14 +22,6 @@ export VISUAL='vim'
 export PAGER='less'
 
 #
-# Time
-#
-
-if [[ -z "$LC_TIME" ]]; then
-  export LC_TIME='en_GB.UTF-8'
-fi
-
-#
 # Language
 #
 

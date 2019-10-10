@@ -6,7 +6,6 @@ fi
 # Run Fasd
 unalias d
 alias d="dirs -v"
-alias fd="fasd -d"
 alias z='fasd_cd -d'
 alias zz='fasd_cd -d -i'
 
@@ -22,21 +21,9 @@ function _glob_expand() {
         print -l $res
     fi
 }
-function _f() {
-    if [[ $# -eq 1 ]]; then
-        fdir='.'
-    elif [[ $# -gt 1 ]]; then
-        fdir=$(_glob_expand ${@:2})
-    else
-        return 1
-    fi
-    res=$(echo $fdir | xargs -d '\n' find -L | ag "$1")
-    if [[ -z $res ]]; then
-        return 1
-    fi
-    echo $res
-}
-alias f='noglob _f'
+alias f="noglob fd"
+alias c="bat"
+
 function _cdf() {
     found=$(f $@)
     if [[ $? -eq 0 ]]; then
