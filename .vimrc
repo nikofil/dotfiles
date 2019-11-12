@@ -128,8 +128,8 @@ command Pwd :echo expand('%:p:h')
 " Ag command
 command -nargs=* Ag Ack <args>
 " Delete / keep lines with pattern
-command! -nargs=1 Del :%!grep -av '<args>'
-command! -nargs=1 Keep :%!grep -a '<args>'
+command! -nargs=1 Del :%!rg -avS '<args>'
+command! -nargs=1 Keep :%!rg -aS '<args>'
 " UltiSnips config
 let g:UltiSnipsExpandTrigger="<C-a>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
