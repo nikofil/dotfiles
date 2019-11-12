@@ -23,6 +23,7 @@ function _glob_expand() {
 }
 alias f="noglob fd"
 alias c="bat"
+alias xc="noglob xc"
 
 function _cdf() {
     found=$(f $@)
@@ -103,6 +104,16 @@ function psa() {
 }
 function kpsa() {
     psa $@ | awk '{print $2}' | xargs kill
+}
+
+function x() {
+    for i in $@; do
+        fout=$(echo "$i" | rev | cut -f 2- -d '.' | rev)
+        if [[ -f "$fout" ]]; then
+            fout="$i.out"
+        fi
+        7z x "-o$fout" "$i"
+    done
 }
 
 # rcd
@@ -314,6 +325,7 @@ alias inst="sudo apt-get install"
 alias rmf="rm -rf"
 alias r="ranger"
 alias wl="wunderline"
+alias path="readlink -f"
 function mkcd() {
     command mkdir -p $1 && cd $1
 }
@@ -361,7 +373,7 @@ if type fortune &> /dev/null && type cowsay &> /dev/null; then
         else
             COWSTYLE=""
         fi
-        fortune | cowsay $COWSTYLE
+        fortune fortunes | cowsay $COWSTYLE
     fi
 fi
 
