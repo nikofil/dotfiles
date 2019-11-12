@@ -14,9 +14,8 @@ from google.auth.transport.requests import Request
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
 DT = datetime.timedelta(hours=8)
-TMP_DIR = '/tmp/gcalendar'
-TOKEN_PICKLE = os.path.join(TMP_DIR, 'calendar_token.pickle')
-CACHED_EVENTS = os.path.join(TMP_DIR, 'calendar_events.json')
+TOKEN_PICKLE = '/var/lib/gcalendar/calendar_token.pickle'
+CACHED_EVENTS = '/var/lib/gcalendar/calendar_events.json'
 CREDS_JSON = '/var/lib/gcalendar/credentials.json'
 
 def event_list(now, until):
@@ -53,8 +52,6 @@ def event_list(now, until):
 
 def get_calendar_strs():
     # Call the Calendar API
-    if not os.path.isdir(TMP_DIR):
-        os.mkdir(TMP_DIR)
     dt_now = datetime.datetime.utcnow()
     now = dt_now.isoformat() + 'Z'
     cur = dateutil.parser.parse(now)

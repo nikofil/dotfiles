@@ -384,3 +384,5 @@ fi
 # kubectl autocompletion
 alias kb=kubectl
 source <(kubectl completion zsh)
+
+true
