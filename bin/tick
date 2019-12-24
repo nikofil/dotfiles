@@ -1,0 +1,74 @@
+#!/usr/bin/python
+from __future__ import print_function
+import datetime
+import dateparser
+import sys
+import uuid
+import pytz
+import requests
+from dateutil.tz import tzlocal
+
+TICKTICK_TASK_API = 'https://api.ticktick.com/api/v2/batch/task'
+TICKTICK_INBOX_NAME_FILE = '/var/lib/ticktick/inboxname'
+TICKTICK_COOKIE_FILE = '/var/lib/ticktick/cookie'
+TIME_FMT = '%Y-%m-%dT%H:%M:%S%z' # 2019-12-24T09:00:37+0000
+
+def add_task(msg, dt):
+    with open(TICKTICK_INBOX_NAME_FILE, 'r') as f:
+        inbox_name = f.read().strip()
+    with open(TICKTICK_COOKIE_FILE, 'r') as f:
+        cookie = f.read().strip()
+    body = {
+       "update" : [],
+       "add" : [
+          {
+             "content" : "",
+             "items" : [],
+             "assignee" : None,
+             "status" : 0,
+             "reminders" : [
+                {
+                   "id" : uuid.uuid4().hex[:24],
+                   "trigger" : "TRIGGER:PT0S"
+                }
+             ],
+             "title" : msg,
+             "startDate" : dt.strftime(TIME_FMT),
+             "projectId" : inbox_name,
+             "modifiedTime" : datetime.datetime.utcnow().replace(tzinfo=pytz.utc).strftime(TIME_FMT),
+             "priority" : 0,
+             "tags" : [],
+             "deleted" : 0,
+             "isAllDay" : False,
+             "sortOrder" : 0,
+             "id" : uuid.uuid4().hex[:24],
+             "timeZone" : dt.tzname(),
+             "exDate" : [],
+             "serverStartDate" : dt.strftime(TIME_FMT),
+             "dueDate" : None,
+             "progress" : 0
+          }
+       ],
+       "delete" : []
+    }
+    return requests.post(TICKTICK_TASK_API, json=body, headers={'cookie': cookie})
+
+if __name__ == "__main__":
+    line = ' '.join(sys.argv[1:])
+    if '@' not in line:
+        print('"... @ datetime" required')
+        sys.exit(1)
+    parts = line.split('@')
+    dtpart = parts[-1].strip()
+    settings = {'TIMEZONE': datetime.datetime.now(tzlocal()).tzname(), 'RETURN_AS_TIMEZONE_AWARE': True}
+    dt = dateparser.parse(dtpart, settings=settings)
+    if dt is None:
+        print('Could not understand date:', dtpart)
+        sys.exit(1)
+    msg = '@'.join(parts[:-1]).strip()
+    print(msg, 'at', dt)
+    event = add_task(msg, dt)
+    if event.json().get('id2error') == {}:
+        print('Added successfully!')
+    else:
+        print('Errored with:', event.text)

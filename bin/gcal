@@ -1,0 +1,68 @@
+#!/usr/bin/python
+from __future__ import print_function
+import datetime
+import dateparser
+import pickle
+import os
+import os.path
+import sys
+import json
+from dateutil.tz import tzlocal
+from googleapiclient.discovery import build
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
+
+# If modifying these scopes, delete the file token.pickle.
+SCOPES = ['https://www.googleapis.com/auth/calendar']
+TOKEN_PICKLE = '/var/lib/gcalendar/calendar_token.pickle'
+CREDS_JSON = '/var/lib/gcalendar/credentials.json'
+
+def event_add(msg, startdt, enddt):
+    """Shows basic usage of the Google Calendar API.
+    Prints the start and name of the next 10 events on the user's calendar.
+    """
+    creds = None
+    # The file token.pickle stores the user's access and refresh tokens, and is
+    # created automatically when the authorization flow completes for the first
+    # time.
+    if os.path.exists(TOKEN_PICKLE):
+        with open(TOKEN_PICKLE, 'rb') as token:
+            creds = pickle.load(token)
+    # If there are no (valid) credentials available, let the user log in.
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file(CREDS_JSON, SCOPES)
+            creds = flow.run_local_server()
+        # Save the credentials for the next run
+        with open(TOKEN_PICKLE, 'wb') as token:
+            pickle.dump(creds, token)
+    service = build('calendar', 'v3', credentials=creds)
+    return service.events().insert(calendarId='primary', body=dict(
+            summary=msg,
+            start=dict(dateTime=startdt.isoformat()),
+            end=dict(dateTime=enddt.isoformat()),
+        )).execute()
+
+
+if __name__ == "__main__":
+    line = ' '.join(sys.argv[1:])
+    if '@' not in line:
+        print('"... @ datetime" required')
+        sys.exit(1)
+    parts = line.split('@')
+    dtpart = parts[-1].strip()
+    settings = {'TIMEZONE': datetime.datetime.now(tzlocal()).tzname(), 'RETURN_AS_TIMEZONE_AWARE': True}
+    dt = dateparser.parse(dtpart, settings=settings)
+    if dt is None:
+        print('Could not understand date:', dtpart)
+        sys.exit(1)
+    msg = '@'.join(parts[:-1]).strip()
+    print(msg, 'at', dt)
+    event = event_add(msg, dt, dt + datetime.timedelta(hours=1))
+    if event.get('htmlLink'):
+        link = 'https://calendar.google.com/calendar/r/eventedit/' + event['htmlLink'].split('eid=')[1]
+        print(link)
+    else:
+        print('Event link not found...')

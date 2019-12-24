@@ -12,7 +12,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
 # If modifying these scopes, delete the file token.pickle.
-SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
+SCOPES = ['https://www.googleapis.com/auth/calendar']
 DT = datetime.timedelta(hours=8)
 TOKEN_PICKLE = '/var/lib/gcalendar/calendar_token.pickle'
 CACHED_EVENTS = '/var/lib/gcalendar/calendar_events.json'
