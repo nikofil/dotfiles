@@ -89,7 +89,7 @@ set clipboard=unnamedplus  "X clipboard as unnamed
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 " close current tab
-nnoremap <leader>q :bp<CR>:bd #<CR>
+nnoremap <leader>q :bp<CR>:bd! #<CR>
 " close other tabs
 nnoremap <leader>Q :BufOnly<CR>
 " start an Ag search
@@ -130,6 +130,10 @@ command -nargs=* Ag Ack <args>
 " Delete / keep lines with pattern
 command! -nargs=1 Del :%!rg -avS '<args>'
 command! -nargs=1 Keep :%!rg -aS '<args>'
+" Use as hex editor
+command! -nargs=* Xc :!xc "<args>"
+command Hex :%!xxd
+command Unhex :%!xxd -r
 " UltiSnips config
 let g:UltiSnipsExpandTrigger="<C-a>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"

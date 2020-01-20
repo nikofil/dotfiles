@@ -21,8 +21,9 @@ function _glob_expand() {
         print -l $res
     fi
 }
-alias f="noglob fd"
+alias f="noglob fd -p -H"
 alias c="bat"
+alias q="br" # broot
 alias xc="noglob xc"
 
 function _cdf() {
@@ -261,12 +262,13 @@ alias gbi="git bisect"
 alias gbin="git bisect bad"
 alias gbiy="git bisect good"
 alias gbl="git blame -s"
-alias gc="git commit --signoff"
+alias gc="git commit --signoff -S"
 alias gca="git commit --amend --signoff"
 alias gcaa="git commit --amend --no-edit --signoff"
 alias gch="git checkout"
 alias gcherry="git cherry-pick"
 function gchpr(){git fetch $1 refs/pull/$2/head:pr/$2 && git checkout pr/$2;}
+function gchmr(){git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2}
 alias gclean="git clean -f"
 alias gclon="git clone"
 alias gd="git diff"
@@ -312,7 +314,7 @@ function gundo() {git reset --hard $(git rev-parse --abbrev-ref HEAD)@\{${1-1}\}
 unalias gcl
 unalias gcm
 function gcm() {
-    git commit --signoff -m "$*"
+    git commit --signoff -S -m "$*"
 }
 
 alias ..='cd ..'
@@ -384,5 +386,8 @@ fi
 # kubectl autocompletion
 alias kb=kubectl
 source <(kubectl completion zsh)
+
+
+source $HOME/.config/broot/launcher/bash/br
 
 true
