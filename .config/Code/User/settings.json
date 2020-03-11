@@ -36,6 +36,12 @@
             ]
         },
         {
+            "before": ["<leader>", "a"],
+            "commands": [
+                "workbench.view.search"
+            ]
+        },
+        {
             "before": ["<leader>", "space"],
             "commands": [
                 ":nohlsearch"

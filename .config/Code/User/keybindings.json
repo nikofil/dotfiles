@@ -21,6 +21,16 @@
         "command": "workbench.action.files.newUntitledFile"
     },
     {
+        "key": "escape",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "!editorTextFocus && vim.active && !inDebugRepl"
+    },
+    {
+        "key": "down",
+        "command": "search.action.focusSearchList",
+        "when": "searchInputBoxFocus"
+    },
+    {
         "key": "f7",
         "command": "workbench.action.debug.stepInto",
         "when": "inDebugMode"
