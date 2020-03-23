@@ -88,5 +88,10 @@
     {
         "key": "ctrl+f8",
         "command": "workbench.action.tasks.runTask"
+    },
+    {
+        "key": "ctrl+n",
+        "when": "filesExplorerFocus",
+        "command": "workbench.action.closeSidebar"
     }
 ]
