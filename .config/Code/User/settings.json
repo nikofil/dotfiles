@@ -10,6 +10,7 @@
     "vim.easymotionMarkerFontSize": "17",
     "vim.easymotionMarkerFontWeight": "bold",
     "editor.wrappingIndent": "indent",
+    "workbench.editor.enablePreview": false,
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": ["<C-j>"],

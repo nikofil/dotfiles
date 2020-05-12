@@ -12,19 +12,11 @@ alias zz='fasd_cd -d -i'
 # a and f
 alias ag="rg --no-line-number"
 
-function _glob_expand() {
-    res=()
-    for param in $@; do
-        res+=("$(zsh -c "print -l $param")")
-    done
-    if [[ $res != "" ]]; then
-        print -l $res
-    fi
-}
 alias f="noglob fd -p -H"
 alias c="bat"
 alias q="br" # broot
 alias xc="noglob xc"
+alias p="pyp"
 
 function _cdf() {
     found=$(f $@)
@@ -68,18 +60,8 @@ function _vf() {
     fi
 }
 alias vf='noglob _vf'
-function _a() {
-    let cnt=1
-    lastparam=""
-    for param in $@; do
-        if [[ $param[1] != "-" || lastparam == "--" ]]; then break; fi
-        lastparam=$param
-        let cnt=cnt+1
-    done
-    xargs -a <(_glob_expand ${@:$cnt+1}) -d '\n' rg ${@:1:$cnt}
-}
-alias a='RIPGREP_CONFIG_PATH=$HOME/.ripgreprc noglob _a --ignore-file=$HOME/.agignore'
-function _va() {
+alias a='RIPGREP_CONFIG_PATH=$HOME/.ripgreprc rg --ignore-file=$HOME/.agignore'
+function va() {
     lastparam=""
     for param in $@; do
         if [[ $param[1] != "-" || lastparam == "--" ]]; then break; fi
@@ -94,7 +76,6 @@ function _va() {
         return $?
     fi
 }
-alias va='noglob _va'
 
 function psa() {
     psres=$(ps axk -%cpu o user,pid,pgid,%cpu,%mem,rss,stat,start,time,command)

@@ -82,4 +82,6 @@ if __name__ == '__main__':
             except Exception:
                 import traceback
                 with open('/tmp/i3error.txt', 'w') as f:
+                    f.write(line)
+                    f.write('\n')
                     f.write(traceback.format_exc())

@@ -1,3 +1,4 @@
+#!/bin/sh
 # Run with sh
 cd $(dirname "$0")
 
@@ -25,3 +26,13 @@ find . -type f -iname '.*' | while read i; do
         ln -s "$(readlink -f $i)" "$HOME/$i"
     fi
 done
+
+# Some installs of cli tools
+cargo install broot
+cargo install ripgrep
+cargo install fd-find
+sudo pip3 install pypyp
+# fasd
+sudo add-apt-repository ppa:aacebedo/fasd
+sudo apt-get update
+sudo apt-get install fasd
