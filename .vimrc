@@ -143,8 +143,8 @@ let g:tern_request_timeout = 1
 " Use tern_for_vim.
 let g:tern#command = ["tern"]
 let g:tern#arguments = ["--persistent"]
-" Use ag for Ack
-let g:ackprg = 'ag --nogroup --nocolor --column'
+" Use rg for Ack
+let g:ackprg = 'rg --color=never --no-heading --column'
 
 " move in insert mode
 inoremap <C-w> <C-o>w

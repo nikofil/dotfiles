@@ -5,7 +5,7 @@ cd $(dirname "$0")
 # Create symbolic links to bin/everything
 mkdir "$HOME/bin"
 find bin/ -type f | while read i; do
-    ln -s "$(readlink -f $i)" "$HOME/$i"
+    ln -s -f "$(readlink -f $i)" "$HOME/$i"
 done
 
 # Create symbolic links to everything in .dirs
@@ -15,7 +15,7 @@ find . -mindepth 1 -type d -iname '.*' | while read i; do
             mkdir "$HOME/$l"
         done
         find "$i" -type f | while read l; do
-            ln -s "$(readlink -f $l)" "$HOME/$l"
+            ln -s -f "$(readlink -f $l)" "$HOME/$l"
         done
     fi
 done
@@ -23,7 +23,7 @@ done
 # Create symbolic links to all .files
 find . -type f -iname '.*' | while read i; do
     if [ "$i" != "./.gitconfig" ] && [ "$i" != "./.gitignore" ]; then
-        ln -s "$(readlink -f $i)" "$HOME/$i"
+        ln -s -f "$(readlink -f $i)" "$HOME/$i"
     fi
 done
 
