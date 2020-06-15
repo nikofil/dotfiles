@@ -50,5 +50,6 @@ zip -qr9XD ../omni.ja.new *
 
 cd ..
 rm -rf firefox_omni
+find ~/.cache/mozilla/firefox -type d -name startupCache | xargs rm -rf
 
 sudo mv omni.ja.new /usr/lib/firefox/browser/omni.ja
