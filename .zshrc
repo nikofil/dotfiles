@@ -22,11 +22,9 @@ function _cdf() {
     found=$(f $@)
     if [[ $? -eq 0 ]]; then
         echo $found | while read res; do
-            if [[ -d $res ]]; then
+            if [[ -d "$res" ]]; then
                 cd "$res"
                 return 0
-            else
-                cd "$(dirname $res)"
             fi
         done
         return 1
@@ -368,6 +366,7 @@ fi
 alias kb=kubectl
 source <(kubectl completion zsh)
 
+export GPG_TTY=$(tty)
 
 source $HOME/.config/broot/launcher/bash/br
 

@@ -91,12 +91,22 @@
                     "command": "editor.action.referenceSearch.trigger"
                 }
             ]
+        },
+        {
+            "before": ["g", "a"],
+            "commands": [
+                {
+                    "command": "references-view.find"
+                }
+            ]
         }
     ],
     "python.venvPath": "/home/nikos/virtenvs",
     "window.zoomLevel": 0,
     "breadcrumbs.enabled": true,
-    "go.gopath": "/home/nfil/workspace/go",
     "go.formatTool": "goimports",
-    "go.useLanguageServer": true
+    "go.useLanguageServer": true,
+    "go.toolsGopath": "/home/nikos/workspace/go",
+    "go.gopath": "/home/nikos/workspace/go",
+    "go.goroot": "/usr/lib/go-1.14",
 }
