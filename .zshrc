@@ -78,7 +78,7 @@ function va() {
 function psa() {
     psres=$(ps axk -%cpu o user,pid,pgid,%cpu,%mem,rss,stat,start,time,command)
     for i in $@; do
-        psres=$(echo $psres | a -p --no-line-number $i)
+        psres=$(echo "$psres" | grep -a "$i")
     done
     echo $psres
 }
@@ -94,6 +94,15 @@ function x() {
         fi
         7z x "-o$fout" "$i"
     done
+}
+
+function dush() {
+    if [[ $# -eq 0 ]]; then
+        args=$(/bin/ls -A -1)
+    else
+        args=$(printf '%s\n' "${@[@]}")
+    fi
+    echo "$args" | xargs -d '\n' du -s --block-size=M | sort -n -r
 }
 
 # rcd
@@ -207,7 +216,7 @@ alias sv="sudo vim"
 function vout() {
     tmpfile=$(mktemp)
     if [[ $# -eq 1 ]]; then
-        /bin/cp "$1" "$tmpfile"
+        cat "$1" >! "$tmpfile"
     fi
     v "$tmpfile" > /dev/tty
     cat "$tmpfile"
