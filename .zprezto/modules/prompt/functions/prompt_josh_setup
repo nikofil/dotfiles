@@ -94,7 +94,7 @@ function prompt_josh_setup {
   fi
   # Define prompts.
   PROMPT='%F{cyan}${_prompt_josh_pwd}%f${git_info:+${(e)git_info[prompt]}}%(!. %B%F{red}#%f%b.)${user_info}${editor_info[keymap]} '
-  RPROMPT='${RANGERTXT}${editor_info[overwrite]}${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]}'
+  RPROMPT='${RANGERTXT}${editor_info[overwrite]}${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]} %F{blue}[%F{green}%D{%H:%M:%S}%F{blue}]%f'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
 
