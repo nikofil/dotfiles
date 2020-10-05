@@ -5,23 +5,26 @@ map yf yankUrl
 set noautofocus
 set smoothscroll
 map T :tabnew&<space>
-map a :open duckduckgo<space>
-map A :tabnew duckduckgo<space>
+map a :open google<space>
+map A :tabnew google<space>
 map b :buffer<space>
 map B :bookmarks<space>
 map c :open gl<space>
 map C :tabnew gl<space>
 let locale = "uk"
+let defaultengine = "duckduckgo"
 let hintcharacters="abcdefghijklmnopqrstuvwxyz"
 let searchengine amazon = "https://www.amazon.com/s/?field-keywords=%s"
 let searchengine dk = "https://hub.docker.com/search?q=%s&type=image"
-let searchengine duck = "https://duckduckgo.com/?q="
+let searchengine ddg = "https://duckduckgo.com/?q=%s"
+let searchengine duck = "https://duckduckgo.com/?q=%s"
 let searchengine en = "http://translate.google.com/#auto|en|%s"
 let searchengine fr = "http://translate.google.com/#auto|fr|%s"
+let searchengine g = "https://www.google.com/search?q=%s"
 let searchengine gh = "https://github.com/search?q=%s"
 let searchengine gl = "http://www.google.com/search?q=%s&btnI=I%27m+Feeling+Lucky"
-let searchengine gi = "https://www.google.gr/search?tbm=isch&q=%s"
-let searchengine gm = "https://www.google.gr/maps/search/%s"
+let searchengine gi = "https://www.google.com/search?tbm=isch&q=%s"
+let searchengine gm = "https://www.google.com/maps/search/%s"
 let searchengine gr = "http://translate.google.com/#auto|el|%s"
 let searchengine imdb = "http://www.imdb.com/find?q=%s"
 let searchengine quora = "http://www.quora.com/opensearch/query?q=%s&pw={startPage?}"
