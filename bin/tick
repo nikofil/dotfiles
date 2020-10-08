@@ -60,7 +60,7 @@ if __name__ == "__main__":
         sys.exit(1)
     parts = line.split('@')
     dtpart = parts[-1].strip()
-    settings = {'TIMEZONE': datetime.datetime.now(tzlocal()).tzname(), 'RETURN_AS_TIMEZONE_AWARE': True}
+    settings = {'TIMEZONE': datetime.datetime.now(tzlocal()).tzname(), 'RETURN_AS_TIMEZONE_AWARE': True, 'PREFER_DATES_FROM': 'future'}
     dt = dateparser.parse(dtpart, settings=settings)
     if dt is None:
         print('Could not understand date:', dtpart)
