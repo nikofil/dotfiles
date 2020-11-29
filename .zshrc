@@ -216,9 +216,14 @@ alias sv="sudo vim"
 function vout() {
     tmpfile=$(mktemp)
     if [[ $# -eq 1 ]]; then
-        cat "$1" >! "$tmpfile"
+        if [[ "$1" == "-" ]]; then
+            cat >! "$tmpfile"
+        else
+            /bin/cp "$1" "$tmpfile"
+        fi
     fi
     v "$tmpfile" > /dev/tty
+    stty -F /dev/tty sane
     cat "$tmpfile"
     rm "$tmpfile"
 }

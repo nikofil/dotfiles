@@ -92,8 +92,8 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <leader>q :bp<CR>:bd! #<CR>
 " close other tabs
 nnoremap <leader>Q :BufOnly<CR>
-" start an Ag search
-nnoremap <leader>a :Ag<space>
+" start an Rg search
+nnoremap <leader>a :Rg<space>
 
 " global yank/put
 vnoremap <leader>y :write! $HOME/.vim/yankbuffer<CR>
@@ -125,8 +125,8 @@ let g:indentLine_color_term = 239
 command P :echo expand('%:p')
 command Path :echo expand('%:p')
 command Pwd :echo expand('%:p:h')
-" Ag command
-command -nargs=* Ag Ack <args>
+" Rg command
+command -nargs=* Rg Ack <args>
 " Delete / keep lines with pattern
 command! -nargs=1 Del :%!rg -avS '<args>'
 command! -nargs=1 Keep :%!rg -aS '<args>'
@@ -144,7 +144,7 @@ let g:tern_request_timeout = 1
 let g:tern#command = ["tern"]
 let g:tern#arguments = ["--persistent"]
 " Use rg for Ack
-let g:ackprg = 'rg --color=never --no-heading --column'
+let g:ackprg = 'rg -S --color=never --no-heading --column'
 
 " move in insert mode
 inoremap <C-w> <C-o>w

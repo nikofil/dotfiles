@@ -7,18 +7,19 @@ unzip -q omni.ja -d firefox_omni
 patch -p0 <<EOF
 --- /dev/null	2010-01-01 00:00:00.000000000 +0100
 +++ firefox_omni/chrome/browser/content/browser/browser.xhtml	2020-05-10 21:11:24.263816637 +0200
-@@ -280,6 +280,10 @@
+@@ -280,6 +280,11 @@
           modifiers="accel" reserved="true"/>
      <key id="key_newNavigatorTab" data-l10n-id="tab-new-shortcut" modifiers="accel"
           command="cmd_newNavigatorTabNoEvent" reserved="true"/>
 +
 +    <key id="custom_prevTab" key="k" modifiers="accel" oncommand="gBrowser.tabContainer.advanceSelectedTab(-1, true);" reserved="true"/>
 +    <key id="custom_nextTab" key="j" modifiers="accel" oncommand="gBrowser.tabContainer.advanceSelectedTab(1, true);" reserved="true"/>
++    <key id="custom_focusTab" key="e" modifiers="accel" oncommand="window.focus();" reserved="true"/>
 +
      <key id="focusURLBar" data-l10n-id="location-open-shortcut" command="Browser:OpenLocation"
           modifiers="accel"/>
      <key id="focusURLBar2" data-l10n-id="location-open-shortcut-alt" command="Browser:OpenLocation"
-@@ -390,15 +394,15 @@
+@@ -390,15 +395,15 @@
      <key id="key_undoCloseWindow" command="History:UndoCloseWindow" data-l10n-id="window-new-shortcut" modifiers="accel,shift"/>
  
  
@@ -53,3 +54,5 @@ rm -rf firefox_omni
 find ~/.cache/mozilla/firefox -type d -name startupCache | xargs rm -rf
 
 sudo mv omni.ja.new /usr/lib/firefox/browser/omni.ja
+
+find ~/.cache/mozilla/firefox -type d -name startupCache | xargs rm -rf

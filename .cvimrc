@@ -9,8 +9,8 @@ map a :open google<space>
 map A :tabnew google<space>
 map b :buffer<space>
 map B :bookmarks<space>
-map c :open gl<space>
-map C :tabnew gl<space>
+map c :open !<space>
+map C :tabnew !<space>
 let locale = "uk"
 let defaultengine = "duckduckgo"
 let hintcharacters="abcdefghijklmnopqrstuvwxyz"
