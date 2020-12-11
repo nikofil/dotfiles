@@ -30,7 +30,10 @@ Plug 'honza/vim-snippets'
 Plug 'ajh17/VimCompletesMe'
 Plug 'rodjek/vim-puppet'
 Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'posva/vim-vue'
+Plug 'wsdjeg/vim-fetch'
+Plug 'jpalardy/vim-slime'
 
 
 " All of your Plugins must be added before the following line
@@ -93,7 +96,8 @@ nnoremap <leader>q :bp<CR>:bd! #<CR>
 " close other tabs
 nnoremap <leader>Q :BufOnly<CR>
 " start an Rg search
-nnoremap <leader>a :Rg<space>
+nnoremap <leader>a :Ack!<space>
+nnoremap <leader>/ :Rg<CR>
 
 " global yank/put
 vnoremap <leader>y :write! $HOME/.vim/yankbuffer<CR>
@@ -125,8 +129,6 @@ let g:indentLine_color_term = 239
 command P :echo expand('%:p')
 command Path :echo expand('%:p')
 command Pwd :echo expand('%:p:h')
-" Rg command
-command -nargs=* Rg Ack <args>
 " Delete / keep lines with pattern
 command! -nargs=1 Del :%!rg -avS '<args>'
 command! -nargs=1 Keep :%!rg -aS '<args>'
@@ -134,6 +136,13 @@ command! -nargs=1 Keep :%!rg -aS '<args>'
 command! -nargs=* Xc :!xc "<args>"
 command Hex :%!xxd
 command Unhex :%!xxd -r
+" Use ripgrep with fzf to search in all files
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --hidden --ignore-case --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
+  \   <bang>0)
 " UltiSnips config
 let g:UltiSnipsExpandTrigger="<C-a>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -144,7 +153,17 @@ let g:tern_request_timeout = 1
 let g:tern#command = ["tern"]
 let g:tern#arguments = ["--persistent"]
 " Use rg for Ack
-let g:ackprg = 'rg -S --color=never --no-heading --column'
+let g:ackprg = 'rg --vimgrep'
+" Navigate Ack list
+nnoremap <silent> [a :cprevious<CR>
+nnoremap <silent> ]a :cnext<CR>
+" Vim slime target is tmux
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
+let g:slime_no_mappings = 1
+xmap <leader>c <Plug>SlimeRegionSend
+nmap <leader>c <Plug>SlimeParagraphSend
+
 
 " move in insert mode
 inoremap <C-w> <C-o>w

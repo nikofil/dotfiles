@@ -18,6 +18,16 @@ alias q="br" # broot
 alias xc="noglob xc"
 alias p="pyp"
 
+function dush() {
+    args=("${@[@]}")
+    if [[ $# == 0 ]]; then
+        args=(".")
+    fi
+    for d in $args; do
+        du -h -d 1 --all "$d" 2>/dev/null | sort -h -r | grep -v '^0\s'
+    done
+}
+
 function _cdf() {
     found=$(f $@)
     if [[ $? -eq 0 ]]; then
@@ -37,7 +47,7 @@ function cdb() {
     cd "$(dirname $1)"
 }
 alias ff='fasd -f'
-alias fv='fasd -f -t -e vim -b viminfo'
+alias fv='fasd -f -t -e ${EDITOR:-vim} -b viminfo'
 alias vt='v $(fzf)'
 function _vf() {
     found=$(f $@)
@@ -52,7 +62,7 @@ function _vf() {
         if [[ -z "$onlyfiles" ]]; then
             return 1
         fi
-        printf "%s\0" $onlyfiles | xargs -0 sh -c 'vim "$@" < /dev/tty' vim
+        [[ -n "$onlyfiles" ]] && ${EDITOR:-vim} ${onlyfiles}
     else
         return $?
     fi
@@ -65,14 +75,20 @@ function va() {
         if [[ $param[1] != "-" || lastparam == "--" ]]; then break; fi
         lastparam=$param
     done
-    vimexec="vim '+silent!/$param' \"\$@\" < /dev/tty"
-    found=$(a --null -l $@)
+    found=$(a -l $@)
     if [[ $? -eq 0 ]]; then
-        echo -n $found | xargs -0 sh -c $vimexec vim
+        [[ -n "$found" ]] && ${EDITOR:-vim} "+silent!/$param" ${(f)found}
         return 0
     else
         return $?
     fi
+}
+
+function fa() {
+    pat="$@"
+    if [ "$#" -lt 1 ]; then pat=''; fi
+    files=$(rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color always "$pat" 2>/dev/null | fzf --ansi --multi --reverse | awk -F ':' '{print $1":"$2":"$3}')
+    [[ -n "$files" ]] && ${EDITOR:-vim} ${(f)files}
 }
 
 function psa() {
@@ -84,6 +100,12 @@ function psa() {
 }
 function kpsa() {
     psa $@ | awk '{print $2}' | xargs kill
+}
+function kp() {
+    pid=$(ps -ef | sed 1d | eval "fzf ${FZF_DEFAULT_OPTS} -m --header='[kill:process]'" | awk '{print $2}')
+    if [ "x$pid" != "x" ]; then
+        echo $pid | xargs kill -${1:-9}
+    fi
 }
 
 function x() {
@@ -133,9 +155,9 @@ export LESS="-Ri"
 
 # fzf
 [[ $- == *i* ]] && source "$HOME/bin/fzf/shell/completion.zsh" 2> /dev/null
-source "$HOME/bin/fzf/shell/key-bindings.zsh"
+source "$HOME/.fzf/shell/key-bindings.zsh"
 
-export EDITOR="vim"
+export EDITOR="nvim"
 bindkey -v
 export KEYTIMEOUT=1
 bindkey '^[[1;2C' forward-word
@@ -209,10 +231,10 @@ alias rm="nocorrect rm -I"
 setopt rm_star_silent
 
 alias em="emacs -nw"
-alias v="vim"
-alias vl="vim -u ~/.vimlessrc -"
+alias v="${EDITOR:-vim}"
+alias vl="${EDITOR:-vim} -u ~/.vimlessrc -"
 alias gv="gvim"
-alias sv="sudo vim"
+alias sv="sudo ${EDITOR:-vim}"
 function vout() {
     tmpfile=$(mktemp)
     if [[ $# -eq 1 ]]; then
@@ -383,5 +405,7 @@ source <(kubectl completion zsh)
 export GPG_TTY=$(tty)
 
 source $HOME/.config/broot/launcher/bash/br
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 true
