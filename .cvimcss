@@ -14,16 +14,17 @@
   box-sizing: content-box;
   box-shadow: 0 3px 3px rgba(0,0,0,0.4);
   left: 0;
-  width: 100%;
+  width: 70%;
   height: 50px;
   font-size: 30pt;
+  margin-left: 15%;
 }
 
 #cVim-command-bar-mode {
   display: inline-block;
   vertical-align: middle;
   box-sizing: border-box;
-  padding-left: 2px;
+  padding-left: 10px;
   height: 100%;
   width: 30px;
   padding-top: 2px;
@@ -44,13 +45,14 @@
 
 #cVim-command-bar-search-results {
   position: fixed;
-  width: 100%;
+  width: 70%;
   overflow: hidden;
   z-index: 2147483647;
   left: 0;
   box-shadow: 0 3px 3px rgba(0,0,0,0.4);
   background-color: #1c1c1c;
   font-size: 14pt;
+  margin-left: 15%;
 }
 
 .cVim-completion-item, .cVim-completion-item .cVim-full, .cVim-completion-item .cVim-left, .cVim-completion-item .cVim-right {
@@ -61,6 +63,7 @@
   vertical-align: middle;
   overflow: hidden;
   white-space: nowrap;
+  padding-left: 12px;
 }
 
 .cVim-completion-item:nth-child(even) {
@@ -85,6 +88,7 @@
 .cVim-completion-item .cVim-left {
   color: #fff;
   width: 37%;
+  display: block;
 }
 
 .cVim-completion-item .cVim-right {

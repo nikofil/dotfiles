@@ -5,9 +5,13 @@ font:
   normal:
     family: DejaVu Sans Mono for Powerline
     style: Book
-  size: 12.0
+  size: 14.0
   offset:
     x: 1
+
+window:
+  title: Terminal
+  dynamic_title: true
 
 # Colors (Dracula)
 colors:

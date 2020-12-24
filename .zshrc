@@ -48,7 +48,7 @@ function cdb() {
 }
 alias ff='fasd -f'
 alias fv='fasd -f -t -e ${EDITOR:-vim} -b viminfo'
-alias vt='v $(fzf)'
+alias vt='v $(fzf --multi --reverse)'
 function _vf() {
     found=$(f $@)
     if [[ $? -eq 0 ]]; then

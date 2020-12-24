@@ -12,19 +12,20 @@ map B :bookmarks<space>
 map c :open !<space>
 map C :tabnew !<space>
 let locale = "uk"
+let searchlimit = 15
 let defaultengine = "duckduckgo"
 let hintcharacters="abcdefghijklmnopqrstuvwxyz"
 let searchengine amazon = "https://www.amazon.com/s/?field-keywords=%s"
 let searchengine dk = "https://hub.docker.com/search?q=%s&type=image"
-let searchengine ddg = "https://duckduckgo.com/?q=%s"
+let searchalias d = "duckduckgo"
 let searchengine duck = "https://duckduckgo.com/?q=%s"
 let searchengine en = "http://translate.google.com/#auto|en|%s"
 let searchengine fr = "http://translate.google.com/#auto|fr|%s"
-let searchengine g = "https://www.google.com/search?q=%s"
+let searchalias g = "google"
 let searchengine gh = "https://github.com/search?q=%s"
 let searchengine gl = "http://www.google.com/search?q=%s&btnI=I%27m+Feeling+Lucky"
-let searchengine gi = "https://www.google.com/search?tbm=isch&q=%s"
-let searchengine gm = "https://www.google.com/maps/search/%s"
+let searchalias gi = "google-image"
+let searchalias gm = "google-maps"
 let searchengine gr = "http://translate.google.com/#auto|el|%s"
 let searchengine imdb = "http://www.imdb.com/find?q=%s"
 let searchengine quora = "http://www.quora.com/opensearch/query?q=%s&pw={startPage?}"
@@ -35,18 +36,15 @@ let searchengine steam = "http://store.steampowered.com/search/?ref=os&term=%s"
 let searchengine tpb = "https://thepiratebay.org/search/%s/0/7/0"
 let searchengine urban = "http://www.urbandictionary.com/define.php?term=%s"
 let searchengine whois = "https://whois.domaintools.com/go/?q=%s&service=whois"
-let searchengine wiki = "https://en.wikipedia.org/w/index.php?search=%s"
-let searchengine wolfram = "http://www.wolframalpha.com/input/?i=%s"
+let searchalias wiki = "wikipedia"
+let searchalias wolfram = "wolframalpha"
 let searchengine vt = "https://www.virustotal.com/#/search/%s"let searchengine whois = "https://whois.domaintools.com/go/?q=%s&service=whois"
-let searchengine yt = "https://www.youtube.com/results?search_query=%s"
-
-
+let searchalias yt = "youtube"
 let searchengine inc = "https://cern.service-now.com/incident_list.do?sysparm_query=assignment_group%3Djavascript:Groups.getMySupportGroups()%5EGOTO123TEXTQUERY321%3D%s"
 let searchengine snow = "https://cern.service-now.com/text_search_exact_match.do?sysparm_search=%s"
 let searchengine kb = "https://cern.service-now.com/service-portal/search.do?q=%s"
 let searchengine landb = "https://network.cern.ch/sc/fcgi/sc.fcgi?Action=SearchForDisplay&DeviceName=%s"
 let searchengine acc = "https://account.cern.ch/account/SecurityTeam/ManageAccounts.aspx?search=%s"
 let searchengine twiki = "https://search.cern.ch/Pages/TwikiResults.aspx?k=%s%20cernscope:ComputerSecurity&autologin=1"
-
 let completionengines = ["google", "wikipedia", "youtube", "imdb", "amazon", "google-maps", "wolframalpha", "google-image", "ebay", "duckduckgo"]
 let blacklists = ["https://cern.service-now.com/*","https://vsoc.napier.ac.uk/","https://vsoc.napier.ac.uk/*"]
