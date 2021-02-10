@@ -93,6 +93,14 @@
             ]
         },
         {
+            "before": ["g", "d"],
+            "commands": [
+                {
+                    "command": "editor.action.goToDeclaration"
+                }
+            ]
+        },
+        {
             "before": ["g", "a"],
             "commands": [
                 {
