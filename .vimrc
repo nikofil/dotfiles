@@ -98,6 +98,8 @@ nnoremap <leader>Q :BufOnly<CR>
 " start an Rg search
 nnoremap <leader>a :Ack!<space>
 nnoremap <leader>/ :Rg<CR>
+" find refs to current symbol
+nnoremap gs :execute "Ack! -w '" . expand("<cword>")."'"<CR>
 
 " global yank/put
 vnoremap <leader>y :write! $HOME/.vim/yankbuffer<CR>
