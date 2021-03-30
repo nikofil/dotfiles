@@ -138,6 +138,8 @@ command! -nargs=1 Keep :%!rg -aS '<args>'
 command! -nargs=* Xc :!xc "<args>"
 command Hex :%!xxd
 command Unhex :%!xxd -r
+" Cat contents to output for copying to clipboard
+command -range=% Cat :<line1>,<line2>.write! $HOME/.vim/buffer_tmp | execute "!cat $HOME/.vim/buffer_tmp" | call delete(expand("$HOME/.vim/buffer_tmp"))
 " Use ripgrep with fzf to search in all files
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(

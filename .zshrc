@@ -12,7 +12,7 @@ alias zz='fasd_cd -d -i'
 # a and f
 alias ag="rg --no-line-number"
 
-alias f="noglob fd -p -H"
+alias f="fd -p -H"
 alias c="bat"
 alias q="br" # broot
 alias xc="noglob xc"
@@ -87,7 +87,7 @@ function va() {
 function fa() {
     pat="$@"
     if [ "$#" -lt 1 ]; then pat=''; fi
-    files=$(rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color always "$pat" 2>/dev/null | fzf --ansi --multi --reverse | awk -F ':' '{print $1":"$2":"$3}')
+    files=$(rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --color always "$pat" 2>/dev/null | fzf --ansi --multi --reverse | awk -F ':' '{print $1":"$2":"$3}')
     [[ -n "$files" ]] && ${EDITOR:-vim} ${(f)files}
 }
 
