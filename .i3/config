@@ -38,7 +38,9 @@ bindsym $mod+F4 kill
 bindsym Mod4+Q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+q exec dmenu_run
+# bindsym $mod+q exec dmenu_run
+# start rofi
+bindsym $mod+q exec "rofi -modi drun,run -show drun"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -58,7 +60,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
