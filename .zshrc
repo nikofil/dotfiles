@@ -195,6 +195,8 @@ bindkey '^i' expand-or-complete-prefix
 bindkey "^O" _rcdw
 # edit command line
 bindkey -M vicmd v edit-command-line
+# insert last word
+bindkey '^k' insert-last-word
 
 # ignore double esc
 noop () { }
