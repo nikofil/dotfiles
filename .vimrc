@@ -25,15 +25,14 @@ Plug 'henrik/vim-indexed-search'
 Plug 'tpope/vim-repeat'
 Plug 'scrooloose/nerdcommenter'
 Plug 'myusuf3/numbers.vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'ajh17/VimCompletesMe'
 Plug 'rodjek/vim-puppet'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'posva/vim-vue'
 Plug 'wsdjeg/vim-fetch'
 Plug 'jpalardy/vim-slime'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
 
 
 " All of your Plugins must be added before the following line
@@ -60,6 +59,7 @@ set hlsearch            " highlight matches
 set ignorecase          " do case insensitive matching
 set smartcase           " do smart case matching
 set hidden
+set completeopt=menuone,noselect
 
 " CtrlP settings
 let g:ctrlp_cmd='CtrlPMRU'
@@ -177,6 +177,13 @@ inoremap <C-h> <C-o>h
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
+
+" compe autocomplete
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 " scroll with up/down
 nmap <Up> <C-y>
