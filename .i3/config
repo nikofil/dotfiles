@@ -55,6 +55,10 @@ bindsym Mod4+F3 exec --no-startup-id amixer -D pulse sset Master 5%+ #increase s
 bindsym Mod4+F2 exec --no-startup-id amixer -D pulse sset Master 5%- #decrease sound volume
 bindsym Mod4+F1 exec --no-startup-id amixer -D pulse set Master 1+ toggle #mute sound
 
+bindsym --release Mod4+F1 exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym --release Mod4+F2 exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+bindsym --release Mod4+F3 exec --no-startup-id pkill -SIGRTMIN+10 i3blocks
+
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
@@ -205,7 +209,7 @@ exec --no-startup-id unity-settings-daemon
 # finds out, if available)
 bar {
   position top
-    status_command "i3status | python ~/bin/i3status-custom"
+    status_command "i3blocks"
     tray_output primary
   colors {
     separator #586e75

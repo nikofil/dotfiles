@@ -6,6 +6,7 @@ import pickle
 import os
 import os.path
 import json
+import subprocess
 import sys
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -65,10 +66,11 @@ def get_calendar_strs():
             events = json.load(fcache)
 
     if not events:
-        return (None, None)
+        return (None, None, None)
     else:
         started = []
         future = None
+        just_started = None
         for event in events:
             summary = event.get('summary')
             if summary is None:
@@ -81,6 +83,8 @@ def get_calendar_strs():
                 start = dateutil.parser.parse(startTime)
                 if start < cur:
                     started.append(summary)
+                    if start > cur - datetime.timedelta(seconds=10):
+                        just_started = summary
                 else:
                     future = (summary, start-cur)
                     break
@@ -98,4 +102,17 @@ def get_calendar_strs():
                 next_event = '{} in {}h{}m'.format(summary, hours, mins)
         else:
             next_event = None
-        return (cur_event, next_event)
+        return (cur_event, next_event, just_started)
+
+
+if __name__ == '__main__':
+    cur_evt, next_evt, just_started = get_calendar_strs()
+    if cur_evt:
+        print(cur_evt, end='')
+        if next_evt:
+            print(' | ', end='')
+    if next_evt:
+        print(next_evt, end='')
+    if just_started:
+        subprocess.Popen(['notify-send', '-t', '10000', 'Current event', just_started])
+    print()
