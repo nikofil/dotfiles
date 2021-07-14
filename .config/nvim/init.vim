@@ -1,6 +1,7 @@
 set mouse=a
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
+let g:completion_auto_change_source = 1
 
 source ~/.vimrc
 
@@ -23,6 +24,7 @@ require'compe'.setup {
   source = {
     path = true;
     nvim_lsp = true;
+    buffer = true;
   };
 }
 
