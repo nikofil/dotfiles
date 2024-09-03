@@ -155,7 +155,7 @@ export LESS="-Ri"
 
 # fzf
 [[ $- == *i* ]] && source "$HOME/bin/fzf/shell/completion.zsh" 2> /dev/null
-source "$HOME/.fzf/shell/key-bindings.zsh"
+source "/usr/share/doc/fzf/examples/key-bindings.zsh"
 
 export EDITOR="nvim"
 bindkey -v
@@ -399,10 +399,6 @@ fi
 # NVM
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-
-# kubectl autocompletion
-alias kb=kubectl
-source <(kubectl completion zsh)
 
 export GPG_TTY=$(tty)
 

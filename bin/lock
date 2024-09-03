@@ -32,7 +32,7 @@ while true ; do
             printf "Usage: $(basename $0) [options]\n\n$OPTIONS\n\n" ; exit 1 ;;
         -d|--desktop) DESKTOP=$(which wmctrl) ; shift ;;
         -g|--greyscale) HUE=(-level 0%,100%,0.6 -set colorspace Gray -separate -average) ; shift ;;
-        -p|--pixelate) EFFECT=(-scale 10% -scale 1000%) ; shift ;;
+        -p|--pixelate) EFFECT=(-scale 4% -scale 2500%) ; shift ;;
         -f|--font)
             case "$2" in
                 "") shift 2 ;;

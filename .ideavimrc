@@ -39,6 +39,11 @@ nnoremap X :action ReopenClosedTab<CR>
 nnoremap <C-k> :action PreviousTab<CR>
 nnoremap <C-j> :action NextTab<CR>
 
+nnoremap gr :action ShowUsages<CR>
+nnoremap gs :action GotoDeclaration<CR>
+nnoremap <F2> :action RenameElement<CR>
+nnoremap ,a :action FindInPath<CR>
+
 map ,q :action CloseEditor<CR>
 map ,Q :action CloseAllEditorsButActive<CR>
 
