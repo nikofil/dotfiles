@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cp /usr/lib/firefox/browser/omni.ja /tmp/omni.ja
+cp /usr/lib/firefox-esr/browser/omni.ja /tmp/omni.ja
 cd /tmp
 unzip -q omni.ja -d firefox_omni
 
@@ -53,6 +53,6 @@ cd ..
 rm -rf firefox_omni
 find ~/.cache/mozilla/firefox -type d -name startupCache | xargs rm -rf
 
-sudo mv omni.ja.new /usr/lib/firefox/browser/omni.ja
+sudo mv omni.ja.new /usr/lib/firefox-esr/browser/omni.ja
 
 find ~/.cache/mozilla/firefox -type d -name startupCache | xargs rm -rf

@@ -1255,7 +1255,7 @@ class Registers(Dashboard.Module):
             # Exclude registers with a dot '.' or parse_and_eval() will fail
             if '.' in name:
                 continue
-            value = gdb.parse_and_eval('${}'.format(name))
+            value = gdb.parse_and_eval('$'+name)
             string_value = Registers.format_value(value)
             changed = self.table and (self.table.get(name, '') != string_value)
             self.table[name] = string_value

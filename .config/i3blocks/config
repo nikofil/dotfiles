@@ -25,11 +25,11 @@
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
 command=/usr/share/i3blocks/$BLOCK_NAME
-separator_block_width=15
+separator_block_width=35
 markup=none
 
 [gcalendar]
-label=📒
+label=📇
 command=$HOME/bin/cal_reminder.py
 interval=30
 

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 from __future__ import print_function
 import datetime
 import dateutil.parser
@@ -57,7 +57,7 @@ def get_calendar_strs():
     now = dt_now.isoformat() + 'Z'
     cur = dateutil.parser.parse(now)
     until = (datetime.datetime.utcnow() + DT).isoformat() + 'Z'
-    if (dt_now.second == 0 and dt_now.minute % 10 == 0) or not os.path.isfile(CACHED_EVENTS):
+    if (dt_now.second < 30 and dt_now.minute % 4 == 0) or not os.path.isfile(CACHED_EVENTS):
         events = event_list(now, until)
         with open(CACHED_EVENTS, 'w') as fcache:
             json.dump(events, fcache)
@@ -72,8 +72,11 @@ def get_calendar_strs():
         future = None
         just_started = None
         for event in events:
+            if event.get('transparency') == 'transparent' or any(i.get('self') and i.get('responseStatus') == 'declined' for i in event.get('attendees', [])):
+                continue
             summary = event.get('summary')
-            if summary is None:
+            # print(json.dumps(event, indent=4))
+            if summary is None or summary == 'Working from office':
                 continue
             startTime = event.get('start', {}).get('dateTime')
             endTime = event.get('end', {}).get('dateTime')
@@ -93,9 +96,11 @@ def get_calendar_strs():
         cur_event = ' > '.join(started) or None
         if future is not None:
             summary, delta = future
-            secs = delta.seconds
+            if len(summary) > 40:
+                summary = summary[:40] + '…'
+            secs = delta.seconds + 59
             hours = secs // 3600
-            mins = (secs%3600 + 59) // 60
+            mins = (secs%3600) // 60
             if hours == 0:
                 next_event = '{} in {}m'.format(summary, mins)
             else:
