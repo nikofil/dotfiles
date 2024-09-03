@@ -147,7 +147,7 @@ export GOPATH=$HOME/workspace/go
 export GOBIN=$HOME/workspace/go/bin
 export WORKON_HOME=$HOME/virtenvs
 export PROJECT_HOME=$HOME/workspace
-export PATH=$PATH:$HOME/.rvm/bin:$HOME/.pyenv/bin:$HOME/.yarn/bin:$HOME/bin:$HOME/.local/bin:$GOBIN:$HOME/bin/fzf/bin
+export PATH=$PATH:$HOME/.rvm/bin:$HOME/.pyenv/bin:$HOME/.yarn/bin:$HOME/bin:$HOME/.local/bin:$GOBIN:$HOME/bin/fzf/bin:/usr/lib/google-golang/bin
 if [[ -e $HOME/lib ]]; then
     export LD_LIBRARY_PATH=$HOME/lib
 fi
@@ -411,3 +411,5 @@ source $HOME/.config/broot/launcher/bash/br
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 true
+
+source /home/nikofil/.config/broot/launcher/bash/br

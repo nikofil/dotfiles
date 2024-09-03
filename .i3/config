@@ -224,7 +224,11 @@ bar {
 
 exec --no-startup-id sleep 1 && /usr/local/bin/pa-applet
 exec --no-startup-id sleep 1 && /usr/bin/nm-applet
-exec --no-startup-id sleep 3 && setxkbmap -layout us,gr -option grp:win_space_toggle && setxkbmap -option ctrl:nocaps && xcape -e 'Control_L=Escape'
+exec --no-startup-id sleep 1 && /usr/bin/blueman-applet
+exec --no-startup-id sleep 8 && setxkbmap -layout us,gr -option grp:win_space_toggle && setxkbmap -option ctrl:nocaps && xcape -e 'Control_L=Escape'
+exec --no-startup-id sleep 2 && /usr/share/goobuntu-indicator/goobuntu_indicator.py
+exec --no-startup-id sleep 2 && /usr/bin/dunst
+
 
 # startup workspace
 exec --no-startup-id sleep 3 && if hash startupi3 2>/dev/null; then startupi3; fi

@@ -33,6 +33,16 @@ label=📒
 command=$HOME/bin/cal_reminder.py
 interval=30
 
+# Generic media player support
+#
+# This displays "ARTIST - SONG" if a music is playing.
+# Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
+# [mediaplayer]
+# instance=spotify
+# label=🎵
+# interval=5
+# signal=10
+
 
 # CPU usage
 #
@@ -100,17 +110,8 @@ interval=20
 # Date Time
 #
 [time]
-command=date '+%Y-%m-%d %H:%M:%S'
+command=date '+%Y-%m-%d %H:%M:%S %:::z'
 interval=1
-
-# Generic media player support
-#
-# This displays "ARTIST - SONG" if a music is playing.
-# Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
-[mediaplayer]
-instance=spotify
-interval=5
-signal=10
 
 # OpenVPN support
 #
@@ -150,6 +151,7 @@ signal=10
 # See the script for details.
 [volume]
 label=🔉
-instance=Master
-interval=10
+command=bash -c 'pactl get-sink-mute @DEFAULT_SINK@ | grep yes >/dev/null && echo -ne MUTE || (pactl get-sink-volume @DEFAULT_SINK@ | awk -v ORS="" {print\ \$5}); pactl get-default-sink | grep bluez_output>/dev/null && echo -ne " 🎧"; echo;'
+# instance=Master
+interval=5
 signal=10

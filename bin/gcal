@@ -39,7 +39,7 @@ def event_add(msg, startdt, enddt):
         with open(TOKEN_PICKLE, 'wb') as token:
             pickle.dump(creds, token)
     service = build('calendar', 'v3', credentials=creds)
-    return service.events().insert(calendarId='primary', body=dict(
+    return service.events().insert(calendarId='c_b5bf71d7bcf44555f646287e1245fc620d839942ea988afad96cc075418d3e43@group.calendar.google.com', body=dict(
             summary=msg,
             start=dict(dateTime=startdt.isoformat()),
             end=dict(dateTime=enddt.isoformat()),
